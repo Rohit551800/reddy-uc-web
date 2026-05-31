@@ -21,24 +21,114 @@
 
 
     /* HERO */
-    .detail-hero{display:grid;grid-template-columns:420px 1fr;min-height:260px;background:#fff;border-bottom:1px solid var(--border)}
-    .detail-hero-img{overflow:hidden}
-    .detail-hero-img img{width:100%;height:100%;object-fit:cover}
-    .detail-hero-img-ph{width:100%;height:100%;min-height:260px;background:linear-gradient(135deg,#c8d6e5,#dce8f0);display:flex;align-items:center;justify-content:center}
-    .detail-hero-img-ph svg{width:64px;height:64px;stroke:#7096b2;fill:none;stroke-width:1.5}
-    .detail-hero-content{padding:40px 48px;display:flex;flex-direction:column;justify-content:center;gap:16px}
-    .detail-hero-content h1{font-family:'Manrope',sans-serif;font-size:32px;font-weight:800;color:var(--blue);line-height:1.25}
-    .detail-hero-content h1 span{color:var(--red)}
-    .detail-hero-content p{font-size:15px;color:var(--muted);line-height:1.65;max-width:520px}
-    .detail-hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-    .detail-hero-contact{display:flex;gap:24px;flex-wrap:wrap}
-    .contact-item{display:flex;flex-direction:column;gap:2px}
-    .contact-item span:first-child{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
-    .contact-item a{font-size:15px;font-weight:700;color:var(--navy);text-decoration:none}
-    .contact-item a:hover{color:var(--red)}
+    .detail-hero{
+      max-width: var(--max);
+      margin: 120px auto 32px;
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 48px;
+      align-items: center;
+      background: #fff;
+    }
+    .detail-hero-img{
+      width: 100%;
+      height: 100%;
+      max-height: 300px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    }
+    .detail-hero-img img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .detail-hero-content{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+    }
+    .detail-hero-content h1{
+      font-family: 'Manrope', sans-serif;
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--blue);
+      line-height: 1.25;
+    }
+    .detail-hero-content h1 span{
+      color: var(--blue);
+    }
+    .detail-hero-content p{
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 540px;
+    }
+    .detail-hero-actions{
+      width: 100%;
+      max-width: 520px;
+    }
+    .detail-hero-actions .btn{
+      width: 100%;
+      justify-content: center;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    .detail-hero-contact{
+      display: flex;
+      gap: 16px;
+      width: 100%;
+      max-width: 520px;
+    }
+    .contact-item{
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .contact-item:hover{
+      border-color: rgba(47, 110, 165, 0.4);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+    .contact-item svg{
+      width: 20px;
+      height: 20px;
+      stroke: var(--blue);
+      fill: none;
+      stroke-width: 2;
+      flex-shrink: 0;
+    }
+    .contact-item-text{
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .contact-item span{
+      font-size: 10px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      font-weight: 600;
+    }
+    .contact-item a{
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .contact-item a:hover{
+      color: var(--red);
+    }
 
     /* MAIN LAYOUT */
-    .detail-body{max-width:var(--max);margin:0 auto;padding:48px 32px;display:grid;grid-template-columns:1fr 320px;gap:48px;align-items:start}
+    .detail-body{max-width:var(--max);margin:0 auto;padding:48px 200px;}
 
     /* CONTENT */
     .detail-content h2{font-family:'Manrope',sans-serif;font-size:26px;font-weight:700;color:var(--blue);margin:36px 0 16px}
@@ -46,8 +136,8 @@
     .detail-content p{font-size:15px;color:var(--muted);line-height:1.75;margin-bottom:14px}
 
     /* Symptoms list */
-    .symptom-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;margin-bottom:8px}
-    .symptom-list li{font-size:14px;color:var(--navy);display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)}
+    .symptom-list{list-style:none;margin-bottom:8px}
+    .symptom-list li{font-size:16px;color:var(--red);display:flex;align-items:center;gap:8px;padding:6px 0;font-weight: 700;}
     .symptom-list li::before{content:'';width:8px;height:8px;background:var(--red);border-radius:50%;flex-shrink:0}
 
     /* Steps grid */
@@ -59,64 +149,30 @@
     .step-card p{font-size:13px;color:var(--muted);line-height:1.65}
 
     /* Types list */
-    .types-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:8px}
-    .types-list li{padding:14px 16px;background:var(--light-bg);border-radius:4px;border-left:3px solid var(--blue)}
-    .types-list li strong{display:block;font-size:14px;color:var(--blue);margin-bottom:4px}
+    .types-list{display:flex;flex-direction:column;gap:12px;margin-bottom:8px; list-style-type: circle;color: var(--red);}
+    .types-list li{padding:14px 16px; }
+    .types-list li strong{display:block;font-size:16px;color:var(--red);margin-bottom:4px}
     .types-list li span{font-size:13px;color:var(--muted);line-height:1.6}
 
     /* ER warning */
-    .er-warning{background:#fff5f5;border:1.5px solid #fca5a5;border-radius:6px;padding:20px 24px;margin-bottom:8px}
-    .er-warning h3{font-size:16px;font-weight:700;color:var(--red);margin-bottom:12px}
+    .er-warning{margin-bottom:8px}
+    .er-warning h3{font-size:14px;font-weight:500;color:var(--body-text);margin-bottom:20px}
     .er-warning ul{list-style:none;display:flex;flex-direction:column;gap:8px}
-    .er-warning ul li{font-size:14px;color:#7f1d1d;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
-    .er-warning ul li::before{content:'•';color:var(--red);font-weight:700;flex-shrink:0}
-    .er-warning p{font-size:13px;color:var(--red);font-weight:600;margin-top:12px}
+    .er-warning ul li{font-size:14px;color:#000;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+    .er-warning ul li::before{content:'•';color: #000;;font-weight:700;flex-shrink:0}
+    .er-warning p{font-size:16px;color:var(--blue);font-weight:600;margin-top:12px}
 
     /* FAQ */
     .faq-list{display:flex;flex-direction:column;gap:0;margin-bottom:8px}
     .faq-item{border-bottom:1px solid var(--border)}
-    .faq-q{width:100%;background:none;border:none;text-align:left;padding:16px 0;font-size:15px;font-weight:600;color:var(--blue);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .faq-q{width:100%;background:none;border:none;text-align:left;padding:16px 0;font-size:15px;font-weight:600;color:var(--red);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
     .faq-q svg{width:18px;height:18px;stroke:var(--blue);fill:none;stroke-width:2;flex-shrink:0;transition:transform .3s}
     .faq-q.open svg{transform:rotate(180deg)}
     .faq-a{display:none;padding:0 0 16px;font-size:14px;color:var(--muted);line-height:1.7}
     .faq-a.open{display:block}
 
-    /* SIDEBAR */
-    .detail-sidebar{position:sticky;top:82px;display:flex;flex-direction:column;gap:20px}
-    .sidebar-card{background:var(--light-bg);border-radius:6px;padding:20px}
-    .sidebar-card h4{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--border)}
-    .sidebar-nav-link{display:block;padding:8px 10px;font-size:13px;font-weight:500;color:var(--blue);text-decoration:none;border-radius:4px;transition:background .2s;margin-bottom:2px;line-height:1.4}
-    .sidebar-nav-link:hover{background:#e2ecf5}
-    .sidebar-nav-link.active{background:var(--blue);color:#fff}
-    .sidebar-contact-card{background:var(--blue);border-radius:6px;padding:20px;color:#fff}
-    .sidebar-contact-card h4{font-size:15px;font-weight:700;color:#fff;margin-bottom:12px}
-    .sc-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:13px;color:rgba(255,255,255,0.9)}
-    .sc-row svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2;flex-shrink:0}
-    .sc-row a{color:#fff;text-decoration:none;font-weight:600}
 
-    /* LOCATIONS STRIP */
-    .locations-strip{padding:56px 32px;background:linear-gradient(120deg,var(--blue) 54%,#cc3532 143%)}
-    .locations-strip-inner{max-width:var(--max);margin:0 auto;text-align:center}
-    .locations-strip-inner h2{font-family:'Manrope',sans-serif;font-size:30px;font-weight:700;color:#fff;margin-bottom:10px}
-    .locations-strip-inner>p{font-size:15px;color:rgba(255,255,255,0.82);max-width:560px;margin:0 auto 28px;line-height:1.65}
-    .loc-cards{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
-    .loc-card-sm{flex:0 0 300px;max-width:340px;background:var(--light-bg);border-radius:4px;position:relative;overflow:hidden;text-align:left}
-    .loc-img-ph{width:100%;height:130px;background:linear-gradient(135deg,#c8d6e5,#dce8f0);display:flex;align-items:center;justify-content:center}
-    .loc-img-ph svg{width:32px;height:32px;stroke:#7096b2;fill:none;stroke-width:1.5}
-    .loc-card-sm-body{padding:14px}
-    .loc-card-sm-body h3{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:8px}
-    .loc-info-sm{display:flex;gap:5px;align-items:flex-start;font-size:12px;color:#333;margin-bottom:6px;line-height:1.4}
-    .loc-info-sm svg{width:13px;height:13px;flex-shrink:0;stroke:#555;fill:none;stroke-width:1.8;margin-top:1px}
-    .loc-phones-sm{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 10px}
-    .loc-phone-sm{font-size:12px;font-weight:600;color:var(--red);text-decoration:none;display:flex;align-items:center;gap:4px}
-    .loc-phone-sm svg{width:12px;height:12px;stroke:var(--red);fill:none;stroke-width:2}
-    .loc-fax-sm{font-size:12px;color:#555;display:flex;align-items:center;gap:4px}
-    .loc-fax-sm svg{width:12px;height:12px;stroke:#555;fill:none;stroke-width:2}
-    .loc-btns-sm{display:flex;gap:6px}
-    .loc-btns-sm .btn{flex:1;font-size:12px;min-height:36px;padding:5px 10px}
-    .loc-status-sm{position:absolute;top:8px;right:8px;padding:3px 8px;font-size:10px;font-weight:700;color:#fff;border-radius:2px}
-    .loc-status-sm.open{background:var(--green)}
-    .loc-status-sm.closed{background:var(--red)}
+
 
     /* INSURANCE */
 
@@ -130,10 +186,23 @@
       .navbar{padding:0 16px}
       .navbar-nav{display:none}
       .navbar-actions .btn:first-child{display:none}
-      .detail-hero{grid-template-columns:1fr}
-      .detail-hero-img{height:220px}
-      .detail-hero-content{padding:24px 20px}
+      .detail-hero{
+        grid-template-columns: 1fr;
+        margin-top: 100px;
+        padding: 0 20px;
+        gap: 24px;
+      }
+      .detail-hero-img{
+        max-height: 220px;
+      }
+      .detail-hero-content{
+        padding: 0;
+      }
       .detail-hero-content h1{font-size:24px}
+      .detail-hero-contact{
+        flex-direction: column;
+        gap: 12px;
+      }
       .detail-body{grid-template-columns:1fr;padding:24px 16px}
       .detail-sidebar{position:static}
       .steps-grid,.symptom-list{grid-template-columns:1fr}
@@ -157,15 +226,12 @@
 
 
 
-<!-- HERO -->
 <section class="detail-hero">
   <div class="detail-hero-img">
-    <div class="detail-hero-img-ph">
-      <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M12 8v4l3 3"/></svg>
-    </div>
+    <img src="../assets/images/treatment-main-img.png" alt="Flu &amp; Influenza Treatment at Reddy Urgent Care" />
   </div>
   <div class="detail-hero-content">
-    <h1>Flu &amp; Influenza Treatment at Reddy <span>Urgent Care</span></h1>
+    <h1>Flu &amp; Influenza Treatment at Reddy <br><span>Urgent Care</span></h1>
     <p>Walk in for same-day flu care — no appointment needed. Rapid flu testing and treatment available now.</p>
     <div class="detail-hero-actions">
       <a href="locations.html" class="btn btn-red">
@@ -175,12 +241,22 @@
     </div>
     <div class="detail-hero-contact">
       <div class="contact-item">
-        <span>Fax Number</span>
-        <a href="#">(562)-336-1659</a>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="2" y="7" width="20" height="14" rx="2" /><polyline points="16 2 16 7 8 7 8 2" />
+        </svg>
+        <div class="contact-item-text">
+          <span>Fax Number</span>
+          <a href="#">(562)-336-1659</a>
+        </div>
       </div>
       <div class="contact-item">
-        <span>Phone Number</span>
-        <a href="tel:5623361656">(562)-336-1656</a>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07" />
+        </svg>
+        <div class="contact-item-text">
+          <span>Phone Number</span>
+          <a href="tel:5623361656">(562)-336-1656</a>
+        </div>
       </div>
     </div>
   </div>
@@ -287,41 +363,7 @@
 
   </article>
 
-  <!-- SIDEBAR -->
-  <aside class="detail-sidebar">
-    <div class="sidebar-card">
-      <h4>Treatments</h4>
-      <a href="treatments.html" class="sidebar-nav-link active">Respiratory</a>
-      <a href="treatments.html" class="sidebar-nav-link">ENT — Ear, Nose &amp; Throat</a>
-      <a href="treatments.html" class="sidebar-nav-link">Injuries &amp; Trauma</a>
-      <a href="treatments.html" class="sidebar-nav-link">Urinary &amp; Abdominal</a>
-      <a href="treatments.html" class="sidebar-nav-link">Skin &amp; Infections</a>
-      <a href="treatments.html" class="sidebar-nav-link">General &amp; Systemic</a>
-      <a href="treatments.html" class="sidebar-nav-link">Women's Health (Urgent)</a>
-      <a href="treatments.html" class="sidebar-nav-link">Vaccinations (Injury-Related)</a>
-    </div>
-    <div class="sidebar-card">
-      <h4>Services</h4>
-      <a href="services.html" class="sidebar-nav-link">Ultrasound</a>
-      <a href="services.html" class="sidebar-nav-link">X-Ray &amp; Imaging</a>
-      <a href="services.html" class="sidebar-nav-link">Blood Draws (On-Site)</a>
-      <a href="services.html" class="sidebar-nav-link">Point-of-Care (POC) Testing</a>
-      <a href="services.html" class="sidebar-nav-link">Injury Care &amp; Splinting</a>
-      <a href="services.html" class="sidebar-nav-link">IV Therapy</a>
-    </div>
-    <div class="sidebar-contact-card">
-      <h4>Contact Us</h4>
-      <div class="sc-row">
-        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/></svg>
-        <div><div style="font-size:11px;opacity:.8;margin-bottom:2px">Phone</div><a href="tel:5623361656">(562) 336-1656</a></div>
-      </div>
-      <div class="sc-row">
-        <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><polyline points="16 2 16 7 8 7 8 2"/></svg>
-        <div><div style="font-size:11px;opacity:.8;margin-bottom:2px">Fax</div><span>(562) 336-1659</span></div>
-      </div>
-      <a href="locations.html" class="btn btn-red" style="width:100%;margin-top:8px;justify-content:center">Find a Location</a>
-    </div>
-  </aside>
+
 
 </div>
 
@@ -335,7 +377,7 @@
       <div class="locations-grid">
         <article class="loc-full-card fade-up">
           <span class="loc-status open">Open</span>
-          <img src="../assets/images/hero-bg.png" alt="Bixby Knolls location" class="loc-full-card-img" />
+          <img src="../assets/images/clinic-img101.jpg" alt="Bixby Knolls location" class="loc-full-card-img" />
           <div class="loc-full-card-body">
             <h3>Bixby knolls, Long Beach</h3>
             <div class="loc-full-info">
@@ -361,7 +403,7 @@
               <span>(562) 336-1659</span>
             </div>
             <div class="loc-full-btns">
-              <a href="downtime-location.html" class="btn btn-red">View Details</a>
+              <a href="bixby-location.html" class="btn btn-red">View Details</a>
               <a href="#" class="btn btn-outline-red">
                 <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
                   <polygon points="3 11 22 2 13 21 11 13 3 11" fill="none" stroke="currentColor" stroke-width="2" />
@@ -374,7 +416,7 @@
 
         <article class="loc-full-card fade-up">
           <span class="loc-status closed">Closed</span>
-          <img src="../assets/images/hero-bg.png" alt="Paramount location" class="loc-full-card-img" />
+          <img src="../assets/images/clinic-img101.jpg" alt="Paramount location" class="loc-full-card-img" />
           <div class="loc-full-card-body">
             <h3>Paramount</h3>
             <div class="loc-full-info">
@@ -400,7 +442,7 @@
               <span>(562) 336-1659</span>
             </div>
             <div class="loc-full-btns">
-              <a href="#" class="btn btn-red">View Details</a>
+              <a href="paramount-location.html" class="btn btn-red">View Details</a>
               <a href="#" class="btn btn-outline-red">
                 <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
                   <polygon points="3 11 22 2 13 21 11 13 3 11" fill="none" stroke="currentColor" stroke-width="2" />

@@ -19,19 +19,24 @@
       --muted: #4A5565; --green: #22C55E; --max: 1216px;
     }
 
-        .sticky-rail { position: fixed; right: 0; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 4px; z-index: 150; }
+    .sticky-rail { position: fixed; right: 0; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 4px; z-index: 150; }
     .sticky-tab { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; overflow: hidden; background: var(--red-dark); color: #fff; text-decoration: none; border-radius: 8px 0 0 8px; white-space: nowrap; transition: width 0.3s ease, background 0.2s ease, padding 0.3s ease; }
     .sticky-tab:hover { width: 160px; background: var(--red); padding-right: 14px; }
     .sticky-tab svg { width: 20px; height: 20px; flex-shrink: 0; stroke: #fff; fill: none; stroke-width: 2; }
     .sticky-label { font-size: 13px; font-weight: 600; opacity: 0; max-width: 0; overflow: hidden; transition: opacity 0.2s ease, max-width 0.3s ease; margin-left: 8px; }
     .sticky-tab:hover .sticky-label { opacity: 1; max-width: 110px; }
     /* PARALLAX HERO */
-    .page-hero { position: relative; height: 340px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .page-hero-bg { position: absolute; inset: -60px 0; background: linear-gradient(120deg, #1C5C93 0%, #2F6EA5 45%, #cc3532 140%); will-change: transform; }
+    .page-hero { position: relative; height: 400px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .page-hero-bg { position: absolute; inset: -60px 0; background-image: url(../assets/images/treatment-hero-img.png);; will-change: transform;background-position: 0 0; }
     .page-hero-overlay { position: absolute; inset: 0; background: rgba(10,25,50,0.4); }
-    .page-hero-content { position: relative; z-index: 2; text-align: center; padding: 0 20px; }
-    .page-hero-content h1 { font-family: 'Manrope', sans-serif; font-size: 54px; font-weight: 800; color: #fff; letter-spacing: -1px; margin-bottom: 14px; }
+    .page-hero-content { position: relative; z-index: 2; top: 100px; padding: 0 20px; }
+    .page-hero-content h1 { font-family: 'Manrope', sans-serif; font-size: 36px; font-weight: 700; color: #fff; letter-spacing: -1px; margin-bottom: 14px; }
     .page-hero-content p { font-size: 17px; color: rgba(255,255,255,0.85); max-width: 520px; margin: 0 auto; line-height: 1.6; }
+
+    .ultra-img img{
+      width: 900px;
+      height: 300px;
+    }
 
     /* FEATURES BAR */
     .features-bar { background: #fff; border-bottom: 1px solid var(--border); padding: 40px 32px; }
@@ -68,9 +73,7 @@
 
     .conditions-treat { margin: 32px 0 36px; }
     .conditions-treat h3 { font-size: 22px; font-weight: 700; color: var(--blue); margin-bottom: 20px; }
-    .conditions-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
-    .conditions-list a { font-size: 15px; color: var(--navy); text-decoration: none; padding: 9px 0; border-bottom: 1px solid var(--border); transition: color 0.2s; display: block; }
-    .conditions-list a:hover { color: var(--red); }
+    .conditions-list a { font-size: 15px; color: var(--red); text-decoration: none; padding: 9px 0; ; transition: color 0.2s; display: block; }
 
     .why-choose { margin-bottom: 36px; }
     .why-choose h3 { font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 20px; }
@@ -84,7 +87,7 @@
     /* TEAM */
     .team-strip { padding: 56px 32px; background: #fff; }
     .team-strip-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 260px 1fr; gap: 48px; align-items: start; }
-    .team-sidebar h2 { font-family: 'Manrope', sans-serif; font-size: 28px; font-weight: 700; color: var(--navy); margin-bottom: 16px; line-height: 1.3; }
+    .team-sidebar h2 { font-family: 'Manrope', sans-serif; font-size: 36px; font-weight: 700; color: var(--navy); margin-bottom: 16px; line-height: 1.3; }
     .team-sidebar p { font-size: 15px; color: var(--muted); line-height: 1.75; }
     .team-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
     .team-card-sm { background: #e6e7e9; border-radius: 0; overflow: hidden; }
@@ -200,15 +203,14 @@
   <div class="page-hero-bg" id="parallaxBg"></div>
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content">
-    <h1>Services</h1>
-    <p>On-site diagnostics, imaging, lab testing &amp; IV therapy — no referral needed</p>
+    <h1>Treatments</h1>
   </div>
 </section>
 
 <!-- FEATURES BAR -->
 <section class="features-bar">
   <div class="features-bar-inner">
-    <h2>Services We Offer at Reddy Urgent Care</h2>
+    <h2>Treatments We Offer at Reddy Urgent Care</h2>
     <p>Walk in for same-day diagnostics and treatment — ultrasound, X-ray, blood draws, POC testing, IV therapy, and injury care, all on-site.</p>
     <div class="features-grid">
       <div class="feature-item"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg></div><h4>Walk-In Only</h4><p>No appointment needed — walk in any time during opening hours.</p></div>
@@ -252,18 +254,18 @@
     <!-- ULTRASOUND -->
     <section id="ultrasound" class="service-section">
       <div class="service-hero">
-        <div class="img-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> Image will be added here</div>
+        <div class="ultra-img"><img src="../assets/images/service-blood.png" alt=""></div>
         <h2>Ultrasound</h2>
         <p>On-site diagnostic ultrasound for gallbladder concerns, deep vein thrombosis (DVT), abdominal issues, and more — no referral needed. Walk in, and our clinical team will perform the scan the same day. Ultrasound is subject to insurance approval and eligibility verification at the front desk.</p>
       </div>
       <div class="conditions-treat">
         <h3>Conditions We Treat</h3>
         <div class="conditions-list">
-          <a href="#">Gallbladder Assessment</a>
-          <a href="#">Soft Tissue Assessment</a>
-          <a href="#">Deep Vein Thrombosis (DVT)</a>
-          <a href="#">Early Pregnancy Confirmation (where clinically indicated)</a>
-          <a href="#">Abdominal Pain Evaluation</a>
+          <a href="treatmentDetail.html">Gallbladder Assessment</a>
+          <a href="treatmentDetail.html">Soft Tissue Assessment</a>
+          <a href="treatmentDetail.html">Deep Vein Thrombosis (DVT)</a>
+          <a href="treatmentDetail.html">Early Pregnancy Confirmation (where clinically indicated)</a>
+          <a href="treatmentDetail.html">Abdominal Pain Evaluation</a>
         </div>
       </div>
       <div class="why-choose">
@@ -436,41 +438,94 @@
 </section>
 
 <!-- LOCATIONS -->
-<section class="locations-strip">
-  <div class="locations-strip-inner">
-    <h2>Walk-In Urgent Care Near You</h2>
-    <p>Three convenient locations across Long Beach and Paramount, serving patients from Lakewood, Carson, Wilmington, Lynwood, and the wider South Bay area.</p>
-    <div class="loc-cards">
-      <div class="loc-card-sm">
-        <span class="loc-status-sm open">Open</span>
-        <div class="loc-img-ph"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <div class="loc-card-sm-body">
-          <h3>Bixby Knolls, Long Beach</h3>
-          <div class="loc-info-sm"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>4237 Atlantic Ave Long Beach, CA 90807</div>
-          <div class="loc-info-sm"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Mon–Fri 9:00 AM–7:00 PM</div>
-          <div class="loc-phones-sm">
-            <a href="tel:5622176506" class="loc-phone-sm"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2"/></svg>(562)-217 6506</a>
-            <span class="loc-fax-sm"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/></svg>(562)-336 1659</span>
-          </div>
-          <div class="loc-btns-sm"><a href="#" class="btn btn-red">View Details</a><a href="https://maps.google.com/?q=4237+Atlantic+Ave+Long+Beach+CA+90807" class="btn btn-outline-red">Directions</a></div>
-        </div>
+ <section class="locations-section" id="locations">
+    <div class="section-inner">
+      <div class="section-header section-header--white fade-up">
+        <h2>Walk-In Urgent Care Near You</h2>
+        <p>Three convenient locations across Long Beach and Paramount, serving patients from Lakewood, Carson,
+          Wilmington, Lynwood, and the wider South Bay area.</p>
       </div>
-      <div class="loc-card-sm">
-        <span class="loc-status-sm closed">Closed</span>
-        <div class="loc-img-ph"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <div class="loc-card-sm-body">
-          <h3>Downtown, Long Beach</h3>
-          <div class="loc-info-sm"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>123 Atlantic Ave Long Beach, CA 90802</div>
-          <div class="loc-info-sm"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Mon–Fri 9:00 AM–7:00 PM</div>
-          <div class="loc-phones-sm">
-            <a href="tel:5622280083" class="loc-phone-sm"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2"/></svg>(562) 228-0083</a>
+      <div class="locations-grid">
+        <article class="loc-full-card fade-up">
+          <span class="loc-status open">Open</span>
+          <img src="../assets/images/clinic-img101.jpg" alt="Bixby Knolls location" class="loc-full-card-img" />
+          <div class="loc-full-card-body">
+            <h3>Bixby knolls, Long Beach</h3>
+            <div class="loc-full-info">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>4237 Atlantic Ave Long Beach, CA 90807</span>
+            </div>
+            <div class="loc-full-info">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              <span class="loc-hours">Mon - Fri 9:00 AM to 7:00PM<br />Sat - Sun 9:00 AM to 4:00PM</span>
+            </div>
+            <hr class="loc-divider" />
+            <div class="loc-contact-row">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07" />
+              </svg>
+              <span>(562) 217-6506</span>
+              <span>(562) 336-1659</span>
+            </div>
+            <div class="loc-full-btns">
+              <a href="bixby-location.html" class="btn btn-red">View Details</a>
+              <a href="#" class="btn btn-outline-red">
+                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                  <polygon points="3 11 22 2 13 21 11 13 3 11" fill="none" stroke="currentColor" stroke-width="2" />
+                </svg>
+                Directions
+              </a>
+            </div>
           </div>
-          <div class="loc-btns-sm"><a href="#" class="btn btn-red">View Details</a><a href="https://maps.google.com/?q=123+Atlantic+Ave+Long+Beach+CA+90802" class="btn btn-outline-red">Directions</a></div>
-        </div>
+        </article>
+
+        <article class="loc-full-card fade-up">
+          <span class="loc-status closed">Closed</span>
+          <img src="../assets/images/clinic-img101.jpg" alt="Paramount location" class="loc-full-card-img" />
+          <div class="loc-full-card-body">
+            <h3>Paramount</h3>
+            <div class="loc-full-info">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>8311 Alondra Blvd, Paramount, CA 90723</span>
+            </div>
+            <div class="loc-full-info">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              <span class="loc-hours">Mon - Fri 9:00 AM to 7:00PM<br />Sat - Sun 9:00 AM to 4:00PM</span>
+            </div>
+            <hr class="loc-divider" />
+            <div class="loc-contact-row">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07" />
+              </svg>
+              <span>(562) 245-8003</span>
+              <span>(562) 336-1659</span>
+            </div>
+            <div class="loc-full-btns">
+              <a href="paramount-location.html" class="btn btn-red">View Details</a>
+              <a href="#" class="btn btn-outline-red">
+                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                  <polygon points="3 11 22 2 13 21 11 13 3 11" fill="none" stroke="currentColor" stroke-width="2" />
+                </svg>
+                Directions
+              </a>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 <!-- MAP -->
 <section class="map-section">
@@ -495,5 +550,6 @@
 <div id="footer-container"></div>
 
 <script src="../JS/include.js"></script>
+<script src="../JS/main.js"></script>
 </body>
 </html>

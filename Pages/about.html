@@ -22,7 +22,7 @@
     /* ── PAGE HERO ── */
     .page-hero {
   position: relative;
-  height: 420px;
+  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,15 +30,16 @@
 }
     .page-hero-bg {
       position: absolute; inset: -60px 0;
-      background: url('../assets/images/hero-bg.png') center/cover no-repeat;
+      background: url('../assets/images.png') center/cover no-repeat;
       will-change: transform;
     }
     .page-hero-overlay {
       position: absolute; inset: 0;
-      background: rgba(15, 35, 60, 0.62);
+      background-image: url(../assets/images/clinic-img101.jpg); 
+      background-size:100% 100%;
     }
-    .page-hero-content { position: relative; z-index: 2; text-align: center; padding: 0 20px; }
-    .page-hero-content h1 { font-family: 'Manrope', sans-serif; font-size: 52px; font-weight: 800; color: #fff; letter-spacing: -1px; margin-bottom: 10px; }
+    .page-hero-content { position: relative; z-index: 2; text-align: end; padding: 0 20px; top: 120px; }
+    .page-hero-content h1 { font-family: 'Manrope', sans-serif; font-size: 36px; font-weight: 700; color: #fff; letter-spacing: -1px; }
     .page-hero-content p { font-size: 17px; color: rgba(255,255,255,0.82); max-width: 500px; margin: 0 auto; line-height: 1.6; }
 
     /* ── WHO WE ARE ── */
@@ -58,12 +59,11 @@
     .who-image-placeholder svg { width: 48px; height: 48px; stroke: #aab4be; fill: none; stroke-width: 1.5; }
 
     /* ── VALUES & VISION ── */
-    .values-section { padding: 80px 32px; background: var(--light-bg); }
+    .values-section { padding: 80px 32px;}
     .values-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-    .value-card { background: #fff; padding: 40px; border-top: 4px solid var(--blue); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
-    .value-card.vision { border-top-color: var(--red); }
+    
     .value-card h3 { font-family: 'Manrope', sans-serif; font-size: 26px; font-weight: 700; color: var(--blue); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
-    .value-card.vision h3 { color: var(--red); }
+    .value-card.vision h3 { color: var(--blue); }
     .value-card h3 svg { width: 28px; height: 28px; stroke: currentColor; fill: none; stroke-width: 1.8; flex-shrink: 0; }
     .value-card p { font-size: 15px; line-height: 1.8; color: var(--muted); }
 
@@ -82,6 +82,9 @@
       background: linear-gradient(135deg, #c8d6e5, #e6e7e9);
       display: flex; align-items: center; justify-content: center;
     }
+    .dr-chief{
+    object-position: 50% center !important;
+}
     .team-card-placeholder svg { width: 64px; height: 64px; stroke: #9aa5b4; fill: none; stroke-width: 1.5; }
     .team-card-info { position: absolute; left: 16px; right: 16px; bottom: 16px; padding: 14px 18px; border-radius: 8px; background: linear-gradient(100deg, var(--blue) 7%, #cc3532 165%); }
     .team-card-info h4 { font-size: 16px; font-weight: 700; color: #fff; }
@@ -186,10 +189,11 @@
 <!-- PAGE HERO -->
 <section class="page-hero">
   <div class="page-hero-bg" id="parallaxBg"></div>
-  <div class="page-hero-overlay"></div>
+  <div class="page-hero-overlay">
+
+  </div>
   <div class="page-hero-content">
     <h1>About Us</h1>
-    <p>Trusted urgent care led by board-certified emergency medicine physicians</p>
   </div>
 </section>
 
@@ -204,11 +208,7 @@
     </div>
     <div class="who-image fade-up">
       <!-- Replace src with your actual clinic image -->
-      <div class="who-image-placeholder">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        Clinic image here
-      </div>
-      <!-- <img src="../assets/images/welcome-clinic-1f2ea0.png" alt="Reddy Urgent Care clinic" /> -->
+      <img src="../assets/images/welcome-clinic-1f2ea0.png" alt="Reddy Urgent Care clinic" />
     </div>
   </div>
 </section>
@@ -219,14 +219,12 @@
     <div class="values-inner">
       <div class="value-card fade-up">
         <h3>
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
           Our Values
         </h3>
         <p>We believe every patient deserves fast, honest, and respectful care — delivered without the wait, cost, or complexity of an emergency room. We are transparent about what we can and cannot treat, clear about insurance coverage before we begin, and committed to making every visit as straightforward as possible.</p>
       </div>
       <div class="value-card vision fade-up">
         <h3>
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           Our Vision
         </h3>
         <p>To be the most trusted urgent care provider in the Long Beach and South Bay community — known not just for how fast we see patients, but for the quality and honesty of the care we deliver. We aim to be the first call for families, workers, and individuals who need same-day medical attention and deserve to be treated with skill and respect.</p>
@@ -245,43 +243,39 @@
     <div class="team-carousel-wrap">
       <div class="team-carousel" id="teamCarousel">
 
-        <article class="team-card">
-          <div class="team-card-placeholder">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0112 0v2"/></svg>
-          </div>
-          <!-- <img src="../assets/images/team-dr-reddy.png" alt="Dr. Usha Rani K Reddy" /> -->
-          <div class="team-card-info">
-            <h4>Dr. Usha Rani, K Reddy, M.D</h4>
-            <span>Founder &amp; Medical Director</span>
-          </div>
-        </article>
+         <!-- CARD 1 -->
+          <article class="team-card">
+            <img src="../assets/images/team-dr-reddy.png" alt="Dr. Usha Rani K Reddy">
 
-        <article class="team-card">
-          <div class="team-card-placeholder">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0112 0v2"/></svg>
-          </div>
-          <!-- <img src="../assets/images/dr2.png" alt="Angelica Alimagno" /> -->
-          <div class="team-card-info">
-            <h4>Angelica Alimagno</h4>
-            <span>NP</span>
-          </div>
-        </article>
+            <div class="team-card-info">
+              <h4>Dr. Usha Rani K Reddy, M.D</h4>
+              <span>Founder &amp; Medical Director</span>
+            </div>
+          </article>
 
-        <article class="team-card">
-          <div class="team-card-placeholder">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0112 0v2"/></svg>
-          </div>
-          <!-- <img src="../assets/images/samuel.png" alt="Mr. Samuel Lee" /> -->
-          <div class="team-card-info">
-            <h4>Mr. Samuel Lee, MBBS</h4>
-            <span>Operations Manager</span>
-          </div>
-        </article>
+          <!-- CARD 2 -->
+          <article class="team-card">
+            <img src="../assets/images/dr2.png" alt="Angelica Alimagno" />
 
-        <article class="team-card">
-          <div class="team-card-placeholder">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0112 0v2"/></svg>
-          </div>
+            <div class="team-card-info">
+              <h4>Angelica Alimagno</h4>
+              <span>Nurse Practitioner</span>
+            </div>
+          </article>
+
+
+          <!-- CARD 3 -->
+          <article class="team-card">
+            <img src="../assets/images/dr3.png" alt="Angelica Alimagno">
+            
+            <div class="team-card-info">
+              <h4>Angelica Alimagno</h4>
+              <span>Nurse Practitioner</span>
+            </div>
+          </article>
+          
+          <article class="team-card">
+          <img class="dr-chief" src="../assets/images/dr4.png" alt="Dr. A">
           <div class="team-card-info">
             <h4>Dr. A</h4>
             <span>Chief</span>
@@ -312,10 +306,8 @@
 
       <article class="loc-card fade-up">
         <span class="loc-status open">Open</span>
-        <div class="loc-img-placeholder">
-          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <!-- <img src="../assets/images/hero-bg.png" alt="Bixby Knolls" class="loc-card-img" /> -->
+
+        <img src="../assets/images/clinic-img101.jpg" alt="Bixby Knolls" class="loc-card-img" />
         <div class="loc-card-body">
           <h3>Bixby Knolls, Long Beach</h3>
           <div class="loc-info">
@@ -348,10 +340,8 @@
 
       <article class="loc-card fade-up">
         <span class="loc-status closed">Closed</span>
-        <div class="loc-img-placeholder">
-          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <!-- <img src="../assets/images/hero-bg.png" alt="Paramount" class="loc-card-img" /> -->
+
+        <img src="../assets/images/clinic-img101.jpg" alt="Paramount" class="loc-card-img" />
         <div class="loc-card-body">
           <h3>Paramount</h3>
           <div class="loc-info">
@@ -395,12 +385,12 @@
     </div>
     <div class="tour-grid fade-up">
       <!-- Replace with actual clinic photos -->
-      <div class="tour-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-      <div class="tour-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-      <div class="tour-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-      <div class="tour-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-      <div class="tour-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-      <div class="tour-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+      <div class="tour-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/> <img src="../assets/images/visual1.jpg" alt=""></svg></div>
+      <div class="tour-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/><img src="../assets/images/visual2.jpg" alt=""></svg></div>
+      <div class="tour-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/><img src="../assets/images/visual3.jpg" alt=""></svg></div>
+      <div class="tour-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/><img src="../assets/images/visual4.jpg" alt=""></svg></div>
+      <div class="tour-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/><img src="../assets/images/visual5.jpg" alt=""></svg></div>
+      <div class="tour-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/><img src="../assets/images/visual6.jpg" alt=""></svg></div>
     </div>
     <div class="tour-cta fade-up">
       <a href="#" class="btn btn-red">

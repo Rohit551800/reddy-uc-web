@@ -22,16 +22,16 @@
     /* HERO */
 .page-hero {
   position: relative;
-  height: 420px;
+  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
-    .page-hero-bg { position: absolute; inset: -60px 0; background: url('../assets/images/hero-bg.png') center/cover no-repeat; will-change: transform; }
+    .page-hero-bg { position: absolute; inset: -60px 0; background: url('../assets/images/location-bg-img.png') center/cover no-repeat; will-change: transform; }
     .page-hero-overlay { position: absolute; inset: 0; background: rgba(10,25,50,0.55); }
-    .page-hero-content { position: relative; z-index: 2; text-align: center; }
-    .page-hero-content h1 { font-family: 'Manrope', sans-serif; font-size: 54px; font-weight: 800; color: #fff; letter-spacing: -1px; }
+    .page-hero-content { position: relative; z-index: 2; top: 100px; }
+    .page-hero-content h1 { font-family: 'Manrope', sans-serif; font-size: 36px; font-weight: 700; color: #fff; letter-spacing: -1px; }
 
     /* CARE TODAY BAR */
     .care-bar { background: var(--light-bg); border: 1px solid var(--border); }
@@ -40,13 +40,9 @@
     .care-bar-text strong { color: var(--red); font-weight: 700; }
 
     /* LOCATIONS GRID SECTION */
-    .locations-main { padding: 64px 32px; background: linear-gradient(120deg, var(--blue) 54%, #cc3532 143%); }
-    .locations-main-inner { max-width: var(--max); margin: 0 auto; }
-    .locations-header { text-align: center; margin-bottom: 48px; }
-    .locations-header h2 { font-family: 'Manrope', sans-serif; font-size: 36px; font-weight: 700; color: #fff; margin-bottom: 12px; }
-    .locations-header p { font-size: 16px; color: rgba(255,255,255,0.85); max-width: 580px; margin: 0 auto; line-height: 1.65; }
 
-    .loc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 860px; margin: 0 auto; }
+
+    .loc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1140px; margin: 0 auto; }
     .loc-card { background: #fff; position: relative; overflow: hidden; }
     .loc-card-img { width: 100%; height: 200px; object-fit: cover; display: block; }
     .loc-img-placeholder { width: 100%; height: 200px; background: linear-gradient(135deg,#c8d6e5,#dce8f0); display: flex; align-items: center; justify-content: center; }
@@ -120,75 +116,120 @@
 <!-- CARE TODAY BAR -->
 <div class="care-bar">
   <div class="care-bar-inner">
-    <p class="care-bar-text"><strong>Need Care Today?</strong> Walk in now.</p>
-    <a href="#map-section" class="btn btn-red">
+
+    <p class="care-bar-text">
+      <strong>Need Care Today?</strong> Walk in now.
+    </p>
+
+    <a
+      href="https://www.google.com/maps/place/Reddy+Urgent+Care+Bixby+Knolls+Long+Beach+CA/@33.8334055,-118.1880997,17z"
+      target="_blank"
+      class="btn btn-red"
+    >
       Directions to Nearest Location
-      <svg viewBox="0 0 24 24" width="15" height="15"><polygon points="3 11 22 2 13 21 11 13 3 11" fill="none" stroke="#fff" stroke-width="2"/></svg>
+
+      <svg viewBox="0 0 24 24" width="15" height="15">
+        <polygon
+          points="3 11 22 2 13 21 11 13 3 11"
+          fill="none"
+          stroke="#fff"
+          stroke-width="2"
+        />
+      </svg>
     </a>
+
   </div>
 </div>
 
 <!-- LOCATIONS GRID -->
-<section class="locations-main" id="locations-section">
-  <div class="locations-main-inner">
-    <div class="locations-header">
-      <h2>Walk-In Urgent Care Near You</h2>
-      <p>Three convenient locations across Long Beach and Paramount, serving patients from Lakewood, Carson, Wilmington, Lynwood, and the wider South Bay area.</p>
-    </div>
-    <div class="loc-grid">
-
-      <!-- Card 1 -->
-      <div class="loc-card">
-        <span class="loc-status open">Open</span>
-        <div class="loc-img-placeholder">
-          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <div class="loc-card-body">
-          <h3>Bixby Knolls, Long Beach</h3>
-          <div class="loc-row"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>4237 Atlantic Ave Long Beach, CA 90807</div>
-          <div class="loc-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Mon - Fri 9:00 AM to 7:00 PM</div>
-          <div class="loc-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Sat - Sun 9:00 AM to 4:00 PM</div>
-          <hr class="loc-divider" />
-          <div class="loc-phones">
-            <a href="tel:5622176506" class="loc-phone"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/></svg>(562)-217 6506</a>
-            <span style="color:#ccc;">|</span>
-            <span class="loc-fax"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><polyline points="16 2 16 7 8 7 8 2"/></svg>(562)-336 1659</span>
-          </div>
-          <div class="loc-btns">
-            <a href="#" class="btn btn-red">View Details</a>
-            <a href="https://maps.google.com/?q=4237+Atlantic+Ave+Long+Beach+CA+90807" class="btn btn-outline-red"><svg viewBox="0 0 24 24" width="13" height="13"><polygon points="3 11 22 2 13 21 11 13 3 11" fill="none" stroke="currentColor" stroke-width="2"/></svg>Directions</a>
-          </div>
-        </div>
+  <section class="locations-section" id="locations">
+    <div class="section-inner">
+      <div class="section-header section-header--white fade-up">
+        <h2>Walk-In Urgent Care Near You</h2>
+        <p>Three convenient locations across Long Beach and Paramount, serving patients from Lakewood, Carson,
+          Wilmington, Lynwood, and the wider South Bay area.</p>
       </div>
+      <div class="locations-grid">
+        <article class="loc-full-card fade-up">
+          <span class="loc-status open">Open</span>
+          <img src="../assets/images/clinic-img101.jpg" alt="Bixby Knolls location" class="loc-full-card-img" />
+          <div class="loc-full-card-body">
+            <h3>Bixby knolls, Long Beach</h3>
+            <div class="loc-full-info">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>4237 Atlantic Ave Long Beach, CA 90807</span>
+            </div>
+            <div class="loc-full-info">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              <span class="loc-hours">Mon - Fri 9:00 AM to 7:00PM<br />Sat - Sun 9:00 AM to 4:00PM</span>
+            </div>
+            <hr class="loc-divider" />
+            <div class="loc-contact-row">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07" />
+              </svg>
+              <span>(562) 217-6506</span>
+              <span>(562) 336-1659</span>
+            </div>
+            <div class="loc-full-btns">
+              <a href="downtown-location.html" class="btn btn-red">View Details</a>
+              <a href="#" class="btn btn-outline-red">
+                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                  <polygon points="3 11 22 2 13 21 11 13 3 11" fill="none" stroke="currentColor" stroke-width="2" />
+                </svg>
+                Directions
+              </a>
+            </div>
+          </div>
+        </article>
 
-      <!-- Card 2 -->
-      <div class="loc-card">
-        <span class="loc-status closed">Closed</span>
-        <div class="loc-img-placeholder">
-          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <div class="loc-card-body">
-          <h3>Paramount</h3>
-          <div class="loc-row"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>8311 Alondra Blvd, Paramount, CA 90723</div>
-          <div class="loc-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Mon - Fri 9:00 AM to 7:00 PM</div>
-          <div class="loc-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Sat - Sun 9:00 AM to 4:00 PM</div>
-          <hr class="loc-divider" />
-          <div class="loc-phones">
-            <a href="tel:5622458003" class="loc-phone"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/></svg>(562)-245 8003</a>
-            <span style="color:#ccc;">|</span>
-            <span class="loc-fax"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><polyline points="16 2 16 7 8 7 8 2"/></svg>(562)-336 1659</span>
+        <article class="loc-full-card fade-up">
+          <span class="loc-status closed">Closed</span>
+          <img src="../assets/images/clinic-img101.jpg" alt="Paramount location" class="loc-full-card-img" />
+          <div class="loc-full-card-body">
+            <h3>Paramount</h3>
+            <div class="loc-full-info">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>8311 Alondra Blvd, Paramount, CA 90723</span>
+            </div>
+            <div class="loc-full-info">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              <span class="loc-hours">Mon - Fri 9:00 AM to 7:00PM<br />Sat - Sun 9:00 AM to 4:00PM</span>
+            </div>
+            <hr class="loc-divider" />
+            <div class="loc-contact-row">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07" />
+              </svg>
+              <span>(562) 245-8003</span>
+              <span>(562) 336-1659</span>
+            </div>
+            <div class="loc-full-btns">
+              <a href="downtown-location.html" class="btn btn-red">View Details</a>
+              <a href="#" class="btn btn-outline-red">
+                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                  <polygon points="3 11 22 2 13 21 11 13 3 11" fill="none" stroke="currentColor" stroke-width="2" />
+                </svg>
+                Directions
+              </a>
+            </div>
           </div>
-          <div class="loc-btns">
-            <a href="#" class="btn btn-red">View Details</a>
-            <a href="https://maps.google.com/?q=8311+Alondra+Blvd+Paramount+CA+90723" class="btn btn-outline-red"><svg viewBox="0 0 24 24" width="13" height="13"><polygon points="3 11 22 2 13 21 11 13 3 11" fill="none" stroke="currentColor" stroke-width="2"/></svg>Directions</a>
-          </div>
-        </div>
+        </article>
       </div>
-
     </div>
-  </div>
-</section>
-
+  </section>
 <!-- MAP SECTION -->
 <section class="map-section" id="map-section">
   <div class="map-section-inner">
@@ -212,6 +253,7 @@
 <div id="footer-container"></div>
 
 <script src="../JS/include.js"></script>
+<script src="../JS/main.js"></script>
 <script src="../JS/pages/locations.js"></script>
 </body>
 </html>
