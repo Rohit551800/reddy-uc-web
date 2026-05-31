@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us – Reddy Urgent Care</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="../CSS/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+   
+
+    /* ── STICKY RAIL ── */
+    .sticky-rail { position: fixed; right: 0; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 4px; z-index: 150; }
+    .sticky-tab { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; overflow: hidden; background: var(--red-dark); color: #fff; text-decoration: none; border-radius: 8px 0 0 8px; white-space: nowrap; transition: width 0.3s ease, background 0.2s ease, padding 0.3s ease; }
+    .sticky-tab:hover { width: 160px; background: var(--red); padding-right: 14px; }
+    .sticky-tab svg { width: 20px; height: 20px; flex-shrink: 0; stroke: #fff; fill: none; stroke-width: 2; }
+    .sticky-label { font-size: 13px; font-weight: 600; opacity: 0; max-width: 0; overflow: hidden; transition: opacity 0.2s ease, max-width 0.3s ease; margin-left: 8px; }
+    .sticky-tab:hover .sticky-label { opacity: 1; max-width: 110px; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+  position: relative;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+    .page-hero-bg {
+      position: absolute; inset: -60px 0;
+      background: url('../assets/images/hero-bg.png') center/cover no-repeat;
+      will-change: transform;
+    }
+    .page-hero-overlay {
+      position: absolute; inset: 0;
+      background: rgba(15, 35, 60, 0.62);
+    }
+    .page-hero-content { position: relative; z-index: 2; text-align: center; padding: 0 20px; }
+    .page-hero-content h1 { font-family: 'Manrope', sans-serif; font-size: 52px; font-weight: 800; color: #fff; letter-spacing: -1px; margin-bottom: 10px; }
+    .page-hero-content p { font-size: 17px; color: rgba(255,255,255,0.82); max-width: 500px; margin: 0 auto; line-height: 1.6; }
+
+    /* ── WHO WE ARE ── */
+    .who-section { padding: 80px 32px; background: #fff; }
+    .who-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr 420px; gap: 64px; align-items: start; }
+    .who-text h2 { font-family: 'Manrope', sans-serif; font-size: 36px; font-weight: 700; color: var(--blue); margin-bottom: 24px; }
+    .who-text h2 .accent { color: var(--red); }
+    .who-text p { font-size: 16px; line-height: 1.8; color: var(--muted); margin-bottom: 18px; }
+    .who-text p strong { color: var(--red); font-weight: 600; }
+    .who-image img { width: 100%; height: 360px; object-fit: cover; border-radius: 4px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+    .who-image-placeholder {
+      width: 100%; height: 360px; background: var(--light-bg);
+      border: 2px dashed var(--border); border-radius: 4px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 12px; color: var(--muted); font-size: 14px;
+    }
+    .who-image-placeholder svg { width: 48px; height: 48px; stroke: #aab4be; fill: none; stroke-width: 1.5; }
+
+    /* ── VALUES & VISION ── */
+    .values-section { padding: 80px 32px; background: var(--light-bg); }
+    .values-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .value-card { background: #fff; padding: 40px; border-top: 4px solid var(--blue); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .value-card.vision { border-top-color: var(--red); }
+    .value-card h3 { font-family: 'Manrope', sans-serif; font-size: 26px; font-weight: 700; color: var(--blue); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+    .value-card.vision h3 { color: var(--red); }
+    .value-card h3 svg { width: 28px; height: 28px; stroke: currentColor; fill: none; stroke-width: 1.8; flex-shrink: 0; }
+    .value-card p { font-size: 15px; line-height: 1.8; color: var(--muted); }
+
+    /* ── TEAM ── */
+    .team-section { padding: 96px 32px; background: #fff; }
+    .team-inner { max-width: var(--max); margin: 0 auto; }
+    .team-header { text-align: center; margin-bottom: 56px; }
+    .team-header h2 { font-family: 'Manrope', sans-serif; font-size: 40px; font-weight: 700; color: var(--navy); margin-bottom: 16px; }
+    .team-header p { font-size: 17px; color: var(--muted); max-width: 680px; margin: 0 auto; line-height: 1.65; }
+    .team-carousel-wrap { overflow: hidden; position: relative; }
+    .team-carousel { display: flex; gap: 24px; transition: transform 0.4s ease; will-change: transform; }
+    .team-card { flex: 0 0 300px; height: 400px; background: #e6e7e9; border-radius: 12px; position: relative; overflow: hidden; }
+    .team-card img { width: 100%; height: 100%; object-fit: cover; object-position: 80%; }
+    .team-card-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #c8d6e5, #e6e7e9);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .team-card-placeholder svg { width: 64px; height: 64px; stroke: #9aa5b4; fill: none; stroke-width: 1.5; }
+    .team-card-info { position: absolute; left: 16px; right: 16px; bottom: 16px; padding: 14px 18px; border-radius: 8px; background: linear-gradient(100deg, var(--blue) 7%, #cc3532 165%); }
+    .team-card-info h4 { font-size: 16px; font-weight: 700; color: #fff; }
+    .team-card-info span { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.9); }
+    .team-nav { display: flex; justify-content: center; gap: 16px; margin-top: 40px; }
+    .carousel-btn { width: 48px; height: 48px; border-radius: 48px; border: none; cursor: pointer; background: var(--light-bg); display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+    .carousel-btn:hover { background: var(--blue); }
+    .carousel-btn:hover svg { stroke: #fff; }
+    .carousel-btn svg { width: 24px; height: 24px; stroke: var(--navy); fill: none; stroke-width: 2.5; }
+
+    /* ── LOCATIONS ── */
+    .locations-section { padding: 96px 32px; background: linear-gradient(120deg, var(--blue) 54%, #cc3532 143%); }
+    .locations-inner { max-width: var(--max); margin: 0 auto; }
+    .locations-header { text-align: center; margin-bottom: 48px; }
+    .locations-header h2 { font-family: 'Manrope', sans-serif; font-size: 36px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .locations-header p { font-size: 17px; color: rgba(255,255,255,0.82); max-width: 600px; margin: 0 auto; line-height: 1.65; }
+    .locations-grid { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; }
+    .loc-card { flex: 0 0 360px; max-width: 380px; background: var(--light-bg); position: relative; overflow: hidden; }
+    .loc-card-img { width: 100%; height: 200px; object-fit: cover; }
+    .loc-img-placeholder { width: 100%; height: 200px; background: linear-gradient(135deg, #c8d6e5, #dce8f0); display: flex; align-items: center; justify-content: center; }
+    .loc-img-placeholder svg { width: 40px; height: 40px; stroke: #7096b2; fill: none; stroke-width: 1.5; }
+    .loc-card-body { padding: 18px; }
+    .loc-card-body h3 { font-size: 17px; font-weight: 600; color: #000; margin-bottom: 14px; }
+    .loc-info { display: flex; gap: 7px; align-items: flex-start; font-size: 12px; color: #333; margin-bottom: 9px; line-height: 1.5; }
+    .loc-info svg { width: 16px; height: 16px; flex-shrink: 0; stroke: #555; fill: none; stroke-width: 1.8; margin-top: 1px; }
+    .loc-hours { font-weight: 500; color: #505050; }
+    .loc-divider { border: none; border-top: 1px solid #ddd; margin: 12px 0; }
+    .loc-contact { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-size: 12px; color: var(--red-dark); font-weight: 500; }
+    .loc-contact svg { width: 16px; height: 16px; stroke: var(--red-dark); fill: none; stroke-width: 2; }
+    .loc-btns { display: flex; gap: 10px; margin-top: 14px; }
+    .loc-btns .btn { flex: 1; font-size: 13px; min-height: 40px; padding: 6px 12px; }
+    .loc-status { position: absolute; top: 10px; right: 10px; padding: 3px 10px; font-size: 11px; font-weight: 600; color: #fff; border-radius: 2px; }
+    .loc-status.open { background: var(--green); }
+    .loc-status.closed { background: var(--red); }
+
+    /* ── VISUAL TOUR ── */
+    .tour-section { padding: 96px 32px; background: #fff; }
+    .tour-inner { max-width: var(--max); margin: 0 auto; }
+    .tour-header { text-align: center; margin-bottom: 48px; }
+    .tour-header h2 { font-family: 'Manrope', sans-serif; font-size: 36px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+    .tour-header p { font-size: 17px; color: var(--muted); max-width: 580px; margin: 0 auto; line-height: 1.65; }
+    .tour-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .tour-item { position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--light-bg); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; }
+    .tour-item svg { width: 36px; height: 36px; stroke: #aab4be; fill: none; stroke-width: 1.5; }
+    .tour-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+    .tour-item:hover img { transform: scale(1.04); }
+    .tour-cta { display: flex; justify-content: center; margin-top: 36px; }
+
+    /* ── FOOTER ── */
+    
+    /* ── FADE-UP ── */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .who-inner { grid-template-columns: 1fr; }
+      .who-image img, .who-image-placeholder { height: 280px; }
+    }
+    @media (max-width: 900px) {
+      :root { --page-pad: 24px; }
+      .navbar { grid-template-columns: 1fr auto; padding: 12px 16px; }
+      .navbar-nav { display: none; }
+      .navbar-logo img { width: auto; max-width: 140px; }
+      .values-inner { grid-template-columns: 1fr; }
+      .tour-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-cols { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .page-hero-content h1 { font-size: 34px; }
+      .tour-grid { grid-template-columns: 1fr 1fr; }
+      .footer-cols { grid-template-columns: 1fr; }
+      .footer-inner { padding: 0 20px; }
+      .footer-bottom { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div id="navbar-container"></div>
+
+<!-- Mega -Overlay Section -->
+   <div id="mega-menu-container"></div>
+
+<!-- STICKY RAIL -->
+<aside class="sticky-rail">
+  <a class="sticky-tab" href="index.html#locations">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><polyline points="12 9 12 13 15 15"/><line x1="12" y1="5" x2="12" y2="7"/></svg>
+    <span class="sticky-label">Open Hours</span>
+  </a>
+  <a class="sticky-tab" href="index.html#locations">
+    <svg viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+    <span class="sticky-label">Get Directions</span>
+  </a>
+  <a class="sticky-tab" href="tel:5623361656">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.2a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 6.91A16 16 0 0017.09 17.09l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2z"/></svg>
+    <span class="sticky-label">Call Us</span>
+  </a>
+</aside>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg" id="parallaxBg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <h1>About Us</h1>
+    <p>Trusted urgent care led by board-certified emergency medicine physicians</p>
+  </div>
+</section>
+
+<!-- WHO WE ARE -->
+<section class="who-section">
+  <div class="who-inner">
+    <div class="who-text fade-up">
+      <h2>Who <span class="accent">We Are</span></h2>
+      <p>At <strong>Reddy Urgent Care</strong>, we believe that quality medical care should be within reach for everyone, regardless of age, background, or insurance status. Founded with a commitment to honest, accessible urgent care, our clinics are led by a board-certified emergency medicine physician supported by qualified nurse practitioners at every location.</p>
+      <p>We are not an emergency room, and we are not a primary care practice. We are your community's urgent care, here for the moments that cannot wait until tomorrow. Whether it is a child with a high fever, an adult with a sprained ankle, or a working professional who needs a rapid test before returning to the office, we are ready when you walk in.</p>
+      <p>With walk-in clinics across Long Beach and Paramount, and patients regularly visiting from Lakewood, Carson, Wilmington, Lynwood, and the wider South Bay area, Reddy Urgent Care is proud to be a trusted healthcare resource in the Greater Los Angeles community.</p>
+    </div>
+    <div class="who-image fade-up">
+      <!-- Replace src with your actual clinic image -->
+      <div class="who-image-placeholder">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        Clinic image here
+      </div>
+      <!-- <img src="../assets/images/welcome-clinic-1f2ea0.png" alt="Reddy Urgent Care clinic" /> -->
+    </div>
+  </div>
+</section>
+
+<!-- OUR VALUES & VISION -->
+<section class="values-section">
+  <div style="max-width: var(--max); margin: 0 auto;">
+    <div class="values-inner">
+      <div class="value-card fade-up">
+        <h3>
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          Our Values
+        </h3>
+        <p>We believe every patient deserves fast, honest, and respectful care — delivered without the wait, cost, or complexity of an emergency room. We are transparent about what we can and cannot treat, clear about insurance coverage before we begin, and committed to making every visit as straightforward as possible.</p>
+      </div>
+      <div class="value-card vision fade-up">
+        <h3>
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Our Vision
+        </h3>
+        <p>To be the most trusted urgent care provider in the Long Beach and South Bay community — known not just for how fast we see patients, but for the quality and honesty of the care we deliver. We aim to be the first call for families, workers, and individuals who need same-day medical attention and deserve to be treated with skill and respect.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR TEAM -->
+<section class="team-section" id="team">
+  <div class="team-inner">
+    <div class="team-header fade-up">
+      <h2>Our Team</h2>
+      <p>Our providers bring skill, experience, and genuine care to every patient interaction. Walk in and you will be seen by qualified clinicians who take the time to understand your symptoms and get you the right treatment — every visit, every location.</p>
+    </div>
+    <div class="team-carousel-wrap">
+      <div class="team-carousel" id="teamCarousel">
+
+        <article class="team-card">
+          <div class="team-card-placeholder">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0112 0v2"/></svg>
+          </div>
+          <!-- <img src="../assets/images/team-dr-reddy.png" alt="Dr. Usha Rani K Reddy" /> -->
+          <div class="team-card-info">
+            <h4>Dr. Usha Rani, K Reddy, M.D</h4>
+            <span>Founder &amp; Medical Director</span>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <div class="team-card-placeholder">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0112 0v2"/></svg>
+          </div>
+          <!-- <img src="../assets/images/dr2.png" alt="Angelica Alimagno" /> -->
+          <div class="team-card-info">
+            <h4>Angelica Alimagno</h4>
+            <span>NP</span>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <div class="team-card-placeholder">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0112 0v2"/></svg>
+          </div>
+          <!-- <img src="../assets/images/samuel.png" alt="Mr. Samuel Lee" /> -->
+          <div class="team-card-info">
+            <h4>Mr. Samuel Lee, MBBS</h4>
+            <span>Operations Manager</span>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <div class="team-card-placeholder">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0112 0v2"/></svg>
+          </div>
+          <div class="team-card-info">
+            <h4>Dr. A</h4>
+            <span>Chief</span>
+          </div>
+        </article>
+
+      </div>
+      <div class="team-nav">
+        <button class="carousel-btn" id="teamPrev" type="button" aria-label="Previous">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="carousel-btn" id="teamNext" type="button" aria-label="Next">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WALK-IN LOCATIONS -->
+<section class="locations-section">
+  <div class="locations-inner">
+    <div class="locations-header fade-up">
+      <h2>Walk-In Urgent Care Near You</h2>
+      <p>Three convenient locations across Long Beach and Paramount, serving patients from Lakewood, Carson, Wilmington, Lynwood, and the wider South Bay area.</p>
+    </div>
+    <div class="locations-grid">
+
+      <article class="loc-card fade-up">
+        <span class="loc-status open">Open</span>
+        <div class="loc-img-placeholder">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <!-- <img src="../assets/images/hero-bg.png" alt="Bixby Knolls" class="loc-card-img" /> -->
+        <div class="loc-card-body">
+          <h3>Bixby Knolls, Long Beach</h3>
+          <div class="loc-info">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            4237 Atlantic Ave Long Beach, CA 90807
+          </div>
+          <div class="loc-info loc-hours">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Mon - Fri 9:00 AM to 7:00PM
+          </div>
+          <div class="loc-info loc-hours">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Sat - Sun 9:00 AM to 4:00PM
+          </div>
+          <hr class="loc-divider" />
+          <div class="loc-contact">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/></svg>
+            <span>(562) 217-6506</span>
+            <span>(562) 336-1659</span>
+          </div>
+          <div class="loc-btns">
+            <a href="#" class="btn btn-red">View Details</a>
+            <a href="https://maps.google.com/?q=4237+Atlantic+Ave+Long+Beach+CA+90807" class="btn btn-outline-red">
+              <svg viewBox="0 0 24 24" width="13" height="13"><polygon points="3 11 22 2 13 21 11 13 3 11" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+              Directions
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="loc-card fade-up">
+        <span class="loc-status closed">Closed</span>
+        <div class="loc-img-placeholder">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <!-- <img src="../assets/images/hero-bg.png" alt="Paramount" class="loc-card-img" /> -->
+        <div class="loc-card-body">
+          <h3>Paramount</h3>
+          <div class="loc-info">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            8311 Alondra Blvd, Paramount, CA 90723
+          </div>
+          <div class="loc-info loc-hours">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Mon - Fri 9:00 AM to 7:00PM
+          </div>
+          <div class="loc-info loc-hours">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Sat - Sun 9:00 AM to 4:00PM
+          </div>
+          <hr class="loc-divider" />
+          <div class="loc-contact">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/></svg>
+            <span>(562) 245-8003</span>
+            <span>(562) 336-1659</span>
+          </div>
+          <div class="loc-btns">
+            <a href="#" class="btn btn-red">View Details</a>
+            <a href="https://maps.google.com/?q=8311+Alondra+Blvd+Paramount+CA+90723" class="btn btn-outline-red">
+              <svg viewBox="0 0 24 24" width="13" height="13"><polygon points="3 11 22 2 13 21 11 13 3 11" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+              Directions
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- VISUAL TOUR -->
+<section class="tour-section">
+  <div class="tour-inner">
+    <div class="tour-header fade-up">
+      <h2>Visual Tour</h2>
+      <p>Take a look inside our clinic. From our welcoming waiting area to our on-site diagnostic equipment, everything you need is right here when you walk in.</p>
+    </div>
+    <div class="tour-grid fade-up">
+      <!-- Replace with actual clinic photos -->
+      <div class="tour-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+      <div class="tour-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+      <div class="tour-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+      <div class="tour-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+      <div class="tour-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+      <div class="tour-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+    </div>
+    <div class="tour-cta fade-up">
+      <a href="#" class="btn btn-red">
+        View More
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12" stroke="#fff" fill="none" stroke-width="2"/><polyline points="12 5 19 12 12 19" stroke="#fff" fill="none" stroke-width="2"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+ <div id="footer-container"></div>
+
+<script src="../JS/include.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  // FADE UP
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // PARALLAX
+  const parallaxBg = document.getElementById('parallaxBg');
+  if (parallaxBg) {
+    window.addEventListener('scroll', () => {
+      parallaxBg.style.transform = `translateY(${window.pageYOffset * 0.4}px)`;
+    }, { passive: true });
+  }
+
+  // TEAM CAROUSEL
+  const track = document.getElementById('teamCarousel');
+  const prev = document.getElementById('teamPrev');
+  const next = document.getElementById('teamNext');
+  if (track && prev && next) {
+    let index = 0;
+    const gap = 24;
+    function visibleCount() {
+      const cardWidth = track.children[0].getBoundingClientRect().width + gap;
+      return Math.max(1, Math.floor(track.parentElement.getBoundingClientRect().width / cardWidth));
+    }
+    function scroll(dir) {
+      const max = Math.max(0, track.children.length - visibleCount());
+      index = Math.min(max, Math.max(0, index + dir));
+      track.style.transform = `translateX(-${index * (track.children[0].getBoundingClientRect().width + gap)}px)`;
+    }
+    prev.addEventListener('click', () => scroll(-1));
+    next.addEventListener('click', () => scroll(1));
+    window.addEventListener('resize', () => { index = 0; track.style.transform = 'translateX(0)'; });
+  }
+
+  // MEGA MENU
+  const servicesToggle = document.getElementById('servicesToggle');
+  const megaMenu = document.getElementById('megaMenu');
+  const megaOverlay = document.getElementById('megaOverlay');
+  if (servicesToggle && megaMenu) {
+    servicesToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isOpen = megaMenu.classList.contains('open');
+      megaMenu.classList.toggle('open', !isOpen);
+      megaOverlay.classList.toggle('open', !isOpen);
+      const arrow = servicesToggle.querySelector('svg');
+      if (arrow) { arrow.style.transform = !isOpen ? 'rotate(180deg)' : 'rotate(0deg)'; arrow.style.transition = 'transform 0.3s ease'; }
+    });
+    megaOverlay.addEventListener('click', () => { megaMenu.classList.remove('open'); megaOverlay.classList.remove('open'); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { megaMenu.classList.remove('open'); megaOverlay.classList.remove('open'); } });
+    megaMenu.querySelectorAll('a').forEach(l => l.addEventListener('click', () => { megaMenu.classList.remove('open'); megaOverlay.classList.remove('open'); }));
+  }
+
+  // NAVBAR SHADOW
+  const navbarWrap = document.querySelector('.navbar-wrap');
+  if (navbarWrap) {
+    window.addEventListener('scroll', () => {
+      navbarWrap.style.boxShadow = window.scrollY > 10 ? '0 4px 20px rgba(0,0,0,0.15)' : '0 2px 12px rgba(0,0,0,0.08)';
+    }, { passive: true });
+  }
+
+});
+</script>
+</body>
+</html>

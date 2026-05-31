@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services – Reddy Urgent Care</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="../CSS/style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: #1B2A3A; background: #fff; overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    :root {
+      --blue: #2F6EA5; --blue-dark: #1C5C93; --red: #E53935; --red-dark: #E7233C;
+      --navy: #1B2A3A; --white: #F8FCFF; --light-bg: #F2F7FB; --border: #E5EAF0;
+      --muted: #4A5565; --green: #22C55E; --max: 1216px;
+    }
+
+        .sticky-rail { position: fixed; right: 0; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 4px; z-index: 150; }
+    .sticky-tab { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; overflow: hidden; background: var(--red-dark); color: #fff; text-decoration: none; border-radius: 8px 0 0 8px; white-space: nowrap; transition: width 0.3s ease, background 0.2s ease, padding 0.3s ease; }
+    .sticky-tab:hover { width: 160px; background: var(--red); padding-right: 14px; }
+    .sticky-tab svg { width: 20px; height: 20px; flex-shrink: 0; stroke: #fff; fill: none; stroke-width: 2; }
+    .sticky-label { font-size: 13px; font-weight: 600; opacity: 0; max-width: 0; overflow: hidden; transition: opacity 0.2s ease, max-width 0.3s ease; margin-left: 8px; }
+    .sticky-tab:hover .sticky-label { opacity: 1; max-width: 110px; }
+    /* PARALLAX HERO */
+    .page-hero { position: relative; height: 340px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .page-hero-bg { position: absolute; inset: -60px 0; background: linear-gradient(120deg, #1C5C93 0%, #2F6EA5 45%, #cc3532 140%); will-change: transform; }
+    .page-hero-overlay { position: absolute; inset: 0; background: rgba(10,25,50,0.4); }
+    .page-hero-content { position: relative; z-index: 2; text-align: center; padding: 0 20px; }
+    .page-hero-content h1 { font-family: 'Manrope', sans-serif; font-size: 54px; font-weight: 800; color: #fff; letter-spacing: -1px; margin-bottom: 14px; }
+    .page-hero-content p { font-size: 17px; color: rgba(255,255,255,0.85); max-width: 520px; margin: 0 auto; line-height: 1.6; }
+
+    /* FEATURES BAR */
+    .features-bar { background: #fff; border-bottom: 1px solid var(--border); padding: 40px 32px; }
+    .features-bar-inner { max-width: var(--max); margin: 0 auto; text-align: center; }
+    .features-bar-inner h2 { font-family: 'Manrope', sans-serif; font-size: 36px; font-weight: 700; color: var(--blue); margin-bottom: 12px; }
+    .features-bar-inner > p { font-size: 17px; color: var(--muted); max-width: 680px; margin: 0 auto; line-height: 1.65; }
+    .features-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; margin-top: 32px; }
+    .feature-item { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 24px 16px; background: var(--light-bg); border-radius: 8px; }
+    .feature-icon { width: 56px; height: 56px; background: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .feature-icon svg { width: 28px; height: 28px; stroke: var(--red); fill: none; stroke-width: 1.8; }
+    .feature-item h4 { font-size: 17px; font-weight: 700; color: var(--navy); }
+    .feature-item p { font-size: 14px; color: var(--muted); line-height: 1.55; text-align: center; }
+
+    /* MAIN LAYOUT */
+    .services-page { max-width: var(--max); margin: 0 auto; padding: 36px 32px; display: grid; grid-template-columns: 220px 1fr; gap: 36px; }
+
+    /* SIDEBAR */
+    .sidebar { position: sticky; top: 82px; align-self: start; }
+    .sidebar-section { margin-bottom: 28px; }
+    .sidebar-title { font-size: 17px; font-weight: 700; color: var(--red); margin-bottom: 10px; padding-bottom: 8px; border-bottom: 2px solid var(--border); }
+    .sidebar-link { display: block; padding: 9px 12px; font-size: 14px; font-weight: 500; color: var(--blue); text-decoration: none; border-radius: 4px; transition: background 0.2s, color 0.2s; margin-bottom: 2px; line-height: 1.4; }
+    .sidebar-link:hover { background: var(--light-bg); color: var(--blue); }
+    .sidebar-link.active { background: var(--blue); color: #fff; }
+
+    /* CONTENT */
+    .service-section { animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+    .img-placeholder { width: 100%; height: 260px; background: var(--light-bg); border: 2px dashed var(--border); border-radius: 6px; margin-bottom: 28px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--muted); gap: 10px; }
+    .img-placeholder svg { width: 28px; height: 28px; stroke: #aab4be; fill: none; stroke-width: 1.5; }
+
+    .service-hero h2 { font-family: 'Manrope', sans-serif; font-size: 36px; font-weight: 700; color: var(--navy); margin-bottom: 16px; }
+    .service-hero p { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 10px; }
+
+    .conditions-treat { margin: 32px 0 36px; }
+    .conditions-treat h3 { font-size: 22px; font-weight: 700; color: var(--blue); margin-bottom: 20px; }
+    .conditions-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .conditions-list a { font-size: 15px; color: var(--navy); text-decoration: none; padding: 9px 0; border-bottom: 1px solid var(--border); transition: color 0.2s; display: block; }
+    .conditions-list a:hover { color: var(--red); }
+
+    .why-choose { margin-bottom: 36px; }
+    .why-choose h3 { font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 20px; }
+    .why-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .why-item { background: #f5f6f8; padding: 28px 24px; border-radius: 4px; }
+    .why-item-icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+    .why-item-icon svg { width: 28px; height: 28px; stroke: var(--red); fill: none; stroke-width: 1.6; }
+    .why-item h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .why-item p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+    /* TEAM */
+    .team-strip { padding: 56px 32px; background: #fff; }
+    .team-strip-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 260px 1fr; gap: 48px; align-items: start; }
+    .team-sidebar h2 { font-family: 'Manrope', sans-serif; font-size: 28px; font-weight: 700; color: var(--navy); margin-bottom: 16px; line-height: 1.3; }
+    .team-sidebar p { font-size: 15px; color: var(--muted); line-height: 1.75; }
+    .team-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .team-card-sm { background: #e6e7e9; border-radius: 0; overflow: hidden; }
+    .team-img-placeholder { width: 100%; height: 400px; background: linear-gradient(160deg,#c8d6e5 0%,#e0e6ed 100%); display: flex; align-items: center; justify-content: center; }
+    .team-img-placeholder svg { width: 64px; height: 64px; stroke: #9aa5b4; fill: none; stroke-width: 1.2; }
+    .team-card-sm img { width: 100%; height: 400px; object-fit: cover; object-position: top center; display: block; }
+    .team-card-sm-info { padding: 20px 22px 22px; background: linear-gradient(100deg, var(--blue) 7%, #9b3060 165%); }
+    .team-card-sm-info h4 { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 5px; }
+    .team-card-sm-info span { font-size: 14px; color: rgba(255,255,255,0.9); }
+
+    /* LOCATIONS STRIP */
+    .locations-strip { padding: 56px 32px; background: linear-gradient(120deg, var(--blue) 54%, #cc3532 143%); }
+    .locations-strip-inner { max-width: var(--max); margin: 0 auto; text-align: center; }
+    .locations-strip-inner h2 { font-family: 'Manrope', sans-serif; font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .locations-strip-inner > p { font-size: 16px; color: rgba(255,255,255,0.82); max-width: 580px; margin: 0 auto 32px; line-height: 1.65; }
+    .loc-cards { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    .loc-card-sm { flex: 0 0 300px; max-width: 340px; background: var(--light-bg); border-radius: 4px; position: relative; overflow: hidden; text-align: left; }
+    .loc-img-ph { width: 100%; height: 130px; background: linear-gradient(135deg,#c8d6e5,#dce8f0); display: flex; align-items: center; justify-content: center; }
+    .loc-img-ph svg { width: 32px; height: 32px; stroke: #7096b2; fill: none; stroke-width: 1.5; }
+    .loc-card-sm img { width: 100%; height: 130px; object-fit: cover; }
+    .loc-card-sm-body { padding: 14px; }
+    .loc-card-sm-body h3 { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+    .loc-info-sm { display: flex; gap: 5px; align-items: flex-start; font-size: 12px; color: #333; margin-bottom: 6px; line-height: 1.4; }
+    .loc-info-sm svg { width: 13px; height: 13px; flex-shrink: 0; stroke: #555; fill: none; stroke-width: 1.8; margin-top: 1px; }
+    .loc-phones-sm { display: flex; gap: 8px; flex-wrap: wrap; margin: 6px 0 10px; }
+    .loc-phone-sm { font-size: 12px; font-weight: 600; color: var(--red); text-decoration: none; display: flex; align-items: center; gap: 4px; }
+    .loc-phone-sm svg { width: 12px; height: 12px; stroke: var(--red); fill: none; stroke-width: 2; }
+    .loc-fax-sm { font-size: 12px; color: #555; display: flex; align-items: center; gap: 4px; }
+    .loc-fax-sm svg { width: 12px; height: 12px; stroke: #555; fill: none; stroke-width: 2; }
+    .loc-btns-sm { display: flex; gap: 6px; }
+    .loc-btns-sm .btn { flex: 1; font-size: 12px; min-height: 36px; padding: 5px 10px; }
+    .loc-status-sm { position: absolute; top: 8px; right: 8px; padding: 3px 8px; font-size: 10px; font-weight: 700; color: #fff; border-radius: 2px; }
+    .loc-status-sm.open { background: var(--green); }
+    .loc-status-sm.closed { background: var(--red); }
+
+    /* MAP */
+    .map-section { padding: 48px 32px; background: #fff; }
+    .map-section-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr 320px; gap: 36px; align-items: center; }
+    .map-placeholder { height: 300px; background: var(--light-bg); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+    .map-placeholder iframe { width: 100%; height: 100%; border: 0; }
+    .map-info h3 { font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 18px; }
+    .map-detail { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 10px; font-size: 14px; color: var(--navy); line-height: 1.5; }
+    .map-detail svg { width: 16px; height: 16px; flex-shrink: 0; stroke: var(--red); fill: none; stroke-width: 1.8; margin-top: 2px; }
+    .map-detail a { color: var(--red); font-weight: 600; text-decoration: none; }
+    .map-btns { display: flex; gap: 10px; margin-top: 20px; }
+
+    /* FOOTER */
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .mega-menu { padding: 28px 32px; }
+      .services-page { padding: 28px 20px; grid-template-columns: 190px 1fr; gap: 24px; }
+      .team-strip-inner { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .navbar { padding: 0 16px; }
+      .navbar-nav { display: none; }
+      .navbar-actions .btn:first-child { display: none; }
+      .page-hero { height: 220px; }
+      .page-hero-content h1 { font-size: 34px; }
+      .features-bar { padding: 24px 16px; }
+      .features-bar-inner h2 { font-size: 26px; }
+      .features-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .services-page { grid-template-columns: 1fr; padding: 20px 16px; gap: 0; }
+      .sidebar { position: static; margin-bottom: 24px; background: var(--light-bg); padding: 16px; border-radius: 8px; }
+      .service-hero h2 { font-size: 26px; }
+      .conditions-list { grid-template-columns: 1fr; }
+      .why-grid-2 { grid-template-columns: 1fr; }
+      .team-strip { padding: 36px 16px; }
+      .team-strip-inner { grid-template-columns: 1fr; gap: 20px; }
+      .team-cards { grid-template-columns: 1fr 1fr; }
+      .team-img-placeholder, .team-card-sm img { height: 260px; }
+      .locations-strip { padding: 36px 16px; }
+      .map-section { padding: 28px 16px; }
+      .map-section-inner { grid-template-columns: 1fr; }
+      .footer-inner { padding: 0 16px; }
+      .footer-cols { grid-template-columns: repeat(2,1fr); }
+      .footer-bottom { padding: 16px; }
+      .mega-menu { padding: 24px 16px; flex-wrap: wrap; }
+      .mega-col { flex: 1 1 45%; border-right: none; padding: 0 10px 16px; border-bottom: 1px solid var(--border); }
+    }
+    @media (max-width: 480px) {
+      .page-hero-content h1 { font-size: 26px; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .team-cards { grid-template-columns: 1fr; }
+      .footer-cols { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body data-page="services">
+
+<!-- NAVBAR -->
+<div id="navbar-container"></div>
+
+<!-- STICKY RAIL -->
+<aside class="sticky-rail">
+  <a class="sticky-tab" href="index.html#locations">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><polyline points="12 9 12 13 15 15"/><line x1="12" y1="5" x2="12" y2="7"/></svg>
+    <span class="sticky-label">Open Hours</span>
+  </a>
+  <a class="sticky-tab" href="index.html#locations">
+    <svg viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+    <span class="sticky-label">Get Directions</span>
+  </a>
+  <a class="sticky-tab" href="tel:5623361656">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.2a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 6.91A16 16 0 0017.09 17.09l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2z"/></svg>
+    <span class="sticky-label">Call Us</span>
+  </a>
+</aside>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg" id="parallaxBg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <h1>Services</h1>
+    <p>On-site diagnostics, imaging, lab testing &amp; IV therapy — no referral needed</p>
+  </div>
+</section>
+
+<!-- FEATURES BAR -->
+<section class="features-bar">
+  <div class="features-bar-inner">
+    <h2>Services We Offer at Reddy Urgent Care</h2>
+    <p>Walk in for same-day diagnostics and treatment — ultrasound, X-ray, blood draws, POC testing, IV therapy, and injury care, all on-site.</p>
+    <div class="features-grid">
+      <div class="feature-item"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg></div><h4>Walk-In Only</h4><p>No appointment needed — walk in any time during opening hours.</p></div>
+      <div class="feature-item"><div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><h4>Same-Day Care</h4><p>Assessment, treatment, and test results are the same day you visit.</p></div>
+      <div class="feature-item"><div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0112 0v2"/></svg></div><h4>All Ages Welcome</h4><p>We treat patients of all ages — children, adults, and seniors.</p></div>
+      <div class="feature-item"><div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div><h4>Insurance Accepted</h4><p>Most major plans accepted. Medi-Cal and Medicare welcome. Bring your card.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN LAYOUT -->
+<div class="services-page">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-title">Treatments</div>
+      <a href="treatments.html" class="sidebar-link">Respiratory</a>
+      <a href="treatments.html" class="sidebar-link">ENT — Ear, Nose &amp; Throat</a>
+      <a href="treatments.html" class="sidebar-link">Injuries &amp; Trauma</a>
+      <a href="treatments.html" class="sidebar-link">Urinary &amp; Abdominal</a>
+      <a href="treatments.html" class="sidebar-link">Skin &amp; Infections</a>
+      <a href="treatments.html" class="sidebar-link">General &amp; Systemic</a>
+      <a href="treatments.html" class="sidebar-link">Women's Health (Urgent)</a>
+      <a href="treatments.html" class="sidebar-link">Vaccinations (Injury-Related)</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">Services</div>
+      <a href="#" class="sidebar-link active" data-section="ultrasound">Ultrasound</a>
+      <a href="#" class="sidebar-link" data-section="xray">X-Ray &amp; Imaging</a>
+      <a href="#" class="sidebar-link" data-section="blood">Blood Draws (On-Site)</a>
+      <a href="#" class="sidebar-link" data-section="poc">Point-of-Care (POC) Testing</a>
+      <a href="#" class="sidebar-link" data-section="injury">Injury Care &amp; Splinting</a>
+      <a href="#" class="sidebar-link" data-section="iv">IV Therapy (Hydration &amp; Antibiotics)</a>
+    </div>
+  </aside>
+
+  <!-- CONTENT -->
+  <main>
+
+    <!-- ULTRASOUND -->
+    <section id="ultrasound" class="service-section">
+      <div class="service-hero">
+        <div class="img-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> Image will be added here</div>
+        <h2>Ultrasound</h2>
+        <p>On-site diagnostic ultrasound for gallbladder concerns, deep vein thrombosis (DVT), abdominal issues, and more — no referral needed. Walk in, and our clinical team will perform the scan the same day. Ultrasound is subject to insurance approval and eligibility verification at the front desk.</p>
+      </div>
+      <div class="conditions-treat">
+        <h3>Conditions We Treat</h3>
+        <div class="conditions-list">
+          <a href="#">Gallbladder Assessment</a>
+          <a href="#">Soft Tissue Assessment</a>
+          <a href="#">Deep Vein Thrombosis (DVT)</a>
+          <a href="#">Early Pregnancy Confirmation (where clinically indicated)</a>
+          <a href="#">Abdominal Pain Evaluation</a>
+        </div>
+      </div>
+      <div class="why-choose">
+        <h3>Why Choose ReddyUC for Ultrasound?</h3>
+        <div class="why-grid-2">
+          <div class="why-item"><div class="why-item-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><h4>Specialized Expertise</h4><p>Our clinic is led by a board-certified emergency medicine physician, supported by qualified nurse practitioners, bringing higher diagnostic capability to every walk-in visit.</p></div>
+          <div class="why-item"><div class="why-item-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg></div><h4>Personalized Treatment Plans</h4><p>No two patients are the same. We assess your specific symptoms, history, and needs to determine the most appropriate care for you, every time.</p></div>
+          <div class="why-item"><div class="why-item-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h4>Comprehensive Care Under One Roof</h4><p>From diagnosis to treatment, X-rays, lab testing, and IV therapy, most of what you need is handled in a single visit, without referrals or additional trips.</p></div>
+          <div class="why-item"><div class="why-item-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><h4>Patient-Centered Support</h4><p>We walk you through your diagnosis, treatment options, and next steps clearly, so you leave informed, not confused.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- X-RAY -->
+    <section id="xray" class="service-section" style="display:none;">
+      <div class="service-hero">
+        <div class="img-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> Image will be added here</div>
+        <h2>X-Ray &amp; Imaging</h2>
+        <p>On-site digital X-ray for fractures, sprains, chest concerns, and more — no referral needed. Results reviewed by our board-certified physician the same visit.</p>
+      </div>
+      <div class="conditions-treat">
+        <h3>Conditions We Assess</h3>
+        <div class="conditions-list">
+          <a href="#">Fractures &amp; Broken Bones</a><a href="#">Chest Concerns (Non-Emergency)</a>
+          <a href="#">Sprains &amp; Joint Injuries</a><a href="#">Foreign Body Detection</a>
+          <a href="#">Back &amp; Spine Evaluation</a><a href="#">Soft Tissue Injuries</a>
+        </div>
+      </div>
+      <div class="why-choose">
+        <h3>Why Choose ReddyUC for X-Ray &amp; Imaging?</h3>
+        <div class="why-grid-2">
+          <div class="why-item"><div class="why-item-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><h4>On-Site Digital X-Ray</h4><p>No need to travel elsewhere — we image and review results in one visit.</p></div>
+          <div class="why-item"><div class="why-item-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h4>Same-Day Results</h4><p>Images reviewed by our board-certified physician during your visit.</p></div>
+          <div class="why-item"><div class="why-item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h4>No Appointment Needed</h4><p>Walk in any time during open hours for imaging services.</p></div>
+          <div class="why-item"><div class="why-item-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><h4>Transparent About Coverage</h4><p>Insurance verified before treatment — X-ray coverage varies by plan.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOOD DRAW -->
+    <section id="blood" class="service-section" style="display:none;">
+      <div class="service-hero">
+        <div class="img-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> Image will be added here</div>
+        <h2>Blood Draws (On-Site)</h2>
+        <p>On-site phlebotomy and blood collection for a wide range of diagnostic tests — no separate lab visit needed. Our clinical team collects and processes samples the same day.</p>
+      </div>
+      <div class="conditions-treat">
+        <h3>Tests We Support</h3>
+        <div class="conditions-list">
+          <a href="#">Complete Blood Count (CBC)</a><a href="#">Thyroid Function Tests</a>
+          <a href="#">Metabolic Panel (CMP / BMP)</a><a href="#">Lipid Panel</a>
+          <a href="#">Liver Function Tests</a><a href="#">Urinalysis</a>
+          <a href="#">Blood Glucose Testing</a><a href="#">STI Screening (select tests)</a>
+        </div>
+      </div>
+      <div class="why-choose">
+        <h3>Why Choose ReddyUC for Blood Draws?</h3>
+        <div class="why-grid-2">
+          <div class="why-item"><div class="why-item-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><h4>On-Site Collection</h4><p>No need to visit a separate lab — blood drawn and processed here.</p></div>
+          <div class="why-item"><div class="why-item-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h4>Same-Day Results</h4><p>Many results available the same visit to inform your treatment plan.</p></div>
+          <div class="why-item"><div class="why-item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h4>Walk-In Anytime</h4><p>No appointment needed during regular operating hours.</p></div>
+          <div class="why-item"><div class="why-item-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><h4>All Ages Welcome</h4><p>Blood draws for children, adults, and seniors.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- POC -->
+    <section id="poc" class="service-section" style="display:none;">
+      <div class="service-hero">
+        <div class="img-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> Image will be added here</div>
+        <h2>Point-of-Care (POC) Testing</h2>
+        <p>Rapid diagnostic testing performed on-site with results available within minutes. No waiting days for lab results — our team tests and treats in one visit.</p>
+      </div>
+      <div class="conditions-treat">
+        <h3>Tests We Offer</h3>
+        <div class="conditions-list">
+          <a href="#">Rapid Flu A &amp; B</a><a href="#">Strep Throat (Rapid)</a>
+          <a href="#">COVID-19 (Rapid Antigen)</a><a href="#">Pregnancy Test</a>
+          <a href="#">Urinalysis (Dipstick)</a><a href="#">Blood Glucose</a>
+          <a href="#">Mono Test</a><a href="#">RSV (Rapid)</a>
+        </div>
+      </div>
+      <div class="why-choose">
+        <h3>Why Choose ReddyUC for POC Testing?</h3>
+        <div class="why-grid-2">
+          <div class="why-item"><div class="why-item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h4>Results in Minutes</h4><p>Rapid tests processed on-site so treatment begins the same visit.</p></div>
+          <div class="why-item"><div class="why-item-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><h4>Board-Certified Review</h4><p>All results reviewed by our emergency medicine physician immediately.</p></div>
+          <div class="why-item"><div class="why-item-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h4>No Lab Visit Needed</h4><p>Everything happens in one place — no extra trips or referrals.</p></div>
+          <div class="why-item"><div class="why-item-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><h4>Walk-In Welcome</h4><p>No appointment needed for rapid testing during open hours.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INJURY CARE -->
+    <section id="injury" class="service-section" style="display:none;">
+      <div class="service-hero">
+        <div class="img-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> Image will be added here</div>
+        <h2>Injury Care &amp; Splinting</h2>
+        <p>Comprehensive injury evaluation and treatment including splinting, wound care, and laceration repair — all on-site. No appointment needed.</p>
+      </div>
+      <div class="conditions-treat">
+        <h3>Conditions We Treat</h3>
+        <div class="conditions-list">
+          <a href="#">Sprains &amp; Strains</a><a href="#">Lacerations &amp; Cuts</a>
+          <a href="#">Minor Fractures (Splinting)</a><a href="#">Wound Care &amp; Cleaning</a>
+          <a href="#">Sports Injuries</a><a href="#">Work-Related Injuries</a>
+          <a href="#">Burns (Minor)</a><a href="#">Abrasions &amp; Contusions</a>
+        </div>
+      </div>
+      <div class="why-choose">
+        <h3>Why Choose ReddyUC for Injury Care?</h3>
+        <div class="why-grid-2">
+          <div class="why-item"><div class="why-item-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h4>On-Site X-Ray &amp; Splinting</h4><p>Image, diagnose, and treat in one visit — no referrals needed.</p></div>
+          <div class="why-item"><div class="why-item-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><h4>Board-Certified Expertise</h4><p>Emergency medicine physician leads every injury evaluation.</p></div>
+          <div class="why-item"><div class="why-item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h4>Faster Than the ER</h4><p>Skip the ER for non-life-threatening injuries — same-day treatment.</p></div>
+          <div class="why-item"><div class="why-item-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><h4>Transparent Billing</h4><p>Insurance verified before treatment — no surprise bills.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IV THERAPY -->
+    <section id="iv" class="service-section" style="display:none;">
+      <div class="service-hero">
+        <div class="img-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> Image will be added here</div>
+        <h2>IV Therapy (Hydration &amp; Antibiotics)</h2>
+        <p>On-site IV hydration and IV antibiotic therapy for dehydration, severe infections, nausea, and more. Subject to physician evaluation and insurance approval.</p>
+      </div>
+      <div class="conditions-treat">
+        <h3>Conditions We Treat</h3>
+        <div class="conditions-list">
+          <a href="#">Severe Dehydration</a><a href="#">IV Antibiotic Treatment</a>
+          <a href="#">Nausea &amp; Vomiting</a><a href="#">Electrolyte Imbalance</a>
+          <a href="#">Migraine (IV Management)</a><a href="#">Post-Illness Recovery</a>
+        </div>
+      </div>
+      <div class="why-choose">
+        <h3>Why Choose ReddyUC for IV Therapy?</h3>
+        <div class="why-grid-2">
+          <div class="why-item"><div class="why-item-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><h4>Physician-Supervised</h4><p>All IV therapy ordered and supervised by our board-certified physician.</p></div>
+          <div class="why-item"><div class="why-item-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h4>On-Site Administration</h4><p>No hospital admission needed — IV therapy administered in our clinic.</p></div>
+          <div class="why-item"><div class="why-item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h4>Fast Relief</h4><p>Start feeling better quickly with direct IV delivery of fluids and medications.</p></div>
+          <div class="why-item"><div class="why-item-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div><h4>Insurance Considered</h4><p>IV therapy subject to prior authorization — we verify eligibility before treatment.</p></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- TEAM -->
+<section class="team-strip" id="teamSection">
+  <div class="team-strip-inner">
+    <div class="team-sidebar">
+      <h2>Meet Our Experienced Urgent Care Team</h2>
+      <p>Your health deserves careful attention and clinical expertise. At Reddy Urgent Care, our providers deliver thoughtful, personalized treatment for every patient who walks through our doors.</p>
+    </div>
+    <div class="team-cards">
+      <div class="team-card-sm">
+        <img src="../assets/images/team-dr-reddy.png" alt="Dr. Usha Rani K Reddy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+        <div class="team-img-placeholder" style="display:none;"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0112 0v2"/></svg></div>
+        <div class="team-card-sm-info"><h4>Dr. Usha Rani K Reddy, M.D</h4><span>Founder &amp; Medical Director</span></div>
+      </div>
+      <div class="team-card-sm">
+        <img src="../assets/images/dr2.png" alt="Angelica Alimagno" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+        <div class="team-img-placeholder" style="display:none;"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0112 0v2"/></svg></div>
+        <div class="team-card-sm-info"><h4>Angelica Alimagno</h4><span>Nurse Practitioner</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section class="locations-strip">
+  <div class="locations-strip-inner">
+    <h2>Walk-In Urgent Care Near You</h2>
+    <p>Three convenient locations across Long Beach and Paramount, serving patients from Lakewood, Carson, Wilmington, Lynwood, and the wider South Bay area.</p>
+    <div class="loc-cards">
+      <div class="loc-card-sm">
+        <span class="loc-status-sm open">Open</span>
+        <div class="loc-img-ph"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="loc-card-sm-body">
+          <h3>Bixby Knolls, Long Beach</h3>
+          <div class="loc-info-sm"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>4237 Atlantic Ave Long Beach, CA 90807</div>
+          <div class="loc-info-sm"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Mon–Fri 9:00 AM–7:00 PM</div>
+          <div class="loc-phones-sm">
+            <a href="tel:5622176506" class="loc-phone-sm"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2"/></svg>(562)-217 6506</a>
+            <span class="loc-fax-sm"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/></svg>(562)-336 1659</span>
+          </div>
+          <div class="loc-btns-sm"><a href="#" class="btn btn-red">View Details</a><a href="https://maps.google.com/?q=4237+Atlantic+Ave+Long+Beach+CA+90807" class="btn btn-outline-red">Directions</a></div>
+        </div>
+      </div>
+      <div class="loc-card-sm">
+        <span class="loc-status-sm closed">Closed</span>
+        <div class="loc-img-ph"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="loc-card-sm-body">
+          <h3>Downtown, Long Beach</h3>
+          <div class="loc-info-sm"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>123 Atlantic Ave Long Beach, CA 90802</div>
+          <div class="loc-info-sm"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Mon–Fri 9:00 AM–7:00 PM</div>
+          <div class="loc-phones-sm">
+            <a href="tel:5622280083" class="loc-phone-sm"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2"/></svg>(562) 228-0083</a>
+          </div>
+          <div class="loc-btns-sm"><a href="#" class="btn btn-red">View Details</a><a href="https://maps.google.com/?q=123+Atlantic+Ave+Long+Beach+CA+90802" class="btn btn-outline-red">Directions</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map-section">
+  <div class="map-section-inner">
+    <div class="map-placeholder">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3315.0!2d-118.18!3d33.83!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dd31e3b9999999%3A0x0!2s8311+Alondra+Blvd%2C+Paramount%2C+CA+90723!5e0!3m2!1sen!2sus!4v1" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <div class="map-info">
+      <h3>Paramount</h3>
+      <div class="map-detail"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>123 Atlantic Ave Long Beach, CA 90802</div>
+      <div class="map-detail"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Mon – Fri 9:00 AM to 7:00 PM</div>
+      <div class="map-detail"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/></svg><a href="tel:5622280083">(562) 228-0083</a></div>
+      <div class="map-btns">
+        <a href="#" class="btn btn-red">View Details</a>
+        <a href="https://maps.google.com/?q=123+Atlantic+Ave+Long+Beach+CA+90802" class="btn btn-outline-red"><svg viewBox="0 0 24 24" width="13" height="13"><polygon points="3 11 22 2 13 21 11 13 3 11" fill="none" stroke="currentColor" stroke-width="2"/></svg>Directions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div id="footer-container"></div>
+
+<script src="../JS/include.js"></script>
+</body>
+</html>
