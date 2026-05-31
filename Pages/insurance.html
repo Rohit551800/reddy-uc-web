@@ -5,75 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Insurance Options – Reddy Urgent Care</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="../CSS/style.css">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; color: #1B2A3A; background: #fff; overflow-x: hidden; }
-    img { display: block; max-width: 100%; }
-
-    :root {
-      --blue: #2F6EA5; --blue-dark: #1C5C93; --red: #E53935; --red-dark: #E7233C;
-      --navy: #1B2A3A; --white: #F8FCFF; --light-bg: #F2F7FB; --border: #E5EAF0;
-      --body-text: #5F6B7A; --green: #22C55E; --muted: #4A5565; --max: 1216px;
-    }
-
-    /* ── NAVBAR ── */
-    .navbar-wrap { position: sticky; top: 0; z-index: 200; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
-    .navbar { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 161px 1fr auto; align-items: center; gap: 24px; padding: 16px 32px; min-height: 80px; }
-    .navbar-logo { display: flex; align-items: center; text-decoration: none; }
-    .navbar-logo img { height: 48px; width: 161px; object-fit: contain; }
-    .navbar-nav { display: flex; align-items: center; justify-content: center; gap: 40px; }
-    .nav-link { font-size: 16px; font-weight: 400; color: #111; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; transition: color 0.2s; }
-    .nav-link:hover { color: var(--blue); }
-    .nav-link svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; }
-    .navbar-actions { display: flex; align-items: center; justify-content: flex-end; gap: 16px; }
-
-    /* ── BUTTONS ── */
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 20px; min-height: 48px; font-size: 16px; font-weight: 500; border-radius: 0; cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s; text-decoration: none; border: 1px solid transparent; white-space: nowrap; }
-    .btn-outline-red { border-color: var(--red-dark); color: var(--red); background: transparent; }
-    .btn-outline-red:hover { background: var(--red); color: #fff; }
-    .btn-red { background: var(--red); border-color: var(--red-dark); color: #fff; }
-    .btn-red:hover { background: #c62828; }
-
-    /* ── MEGA MENU ── */
-    .nav-dropdown { position: relative; }
-    .mega-menu { display: none; position: fixed; left: 0; right: 0; margin: auto 5rem; top: 8rem; background: #fff; border-top: 2px solid var(--border); box-shadow: 0 8px 32px rgba(0,0,0,0.12); z-index: 199; padding: 40px 112px; }
-    .mega-menu.open { display: flex; }
-    .mega-col { flex: 1; padding: 0 24px; border-right: 1px solid var(--border); }
-    .mega-col:first-child { padding-left: 0; } .mega-col:last-child { border-right: none; }
-    .mega-col-title { font-size: 15px; font-weight: 700; color: var(--blue); margin-bottom: 16px; display: block; }
-    .mega-col ul { list-style: none; } .mega-col ul li { margin-bottom: 12px; }
-    .mega-col ul li a { font-size: 13px; color: var(--navy); text-decoration: none; transition: color 0.2s; }
-    .mega-col ul li a:hover { color: var(--red); }
-    .mega-col .view-all { display: inline-block; margin-top: 8px; font-size: 13px; font-weight: 600; color: var(--red); text-decoration: none; }
-    .mega-overlay { display: none; position: fixed; inset: 0; top: 80px; background: rgba(0,0,0,0.3); z-index: 198; }
-    .mega-overlay.open { display: block; }
-
-    /* ── STICKY RAIL ── */
-    .sticky-rail { position: fixed; right: 0; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 4px; z-index: 150; }
-    .sticky-tab { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; overflow: hidden; background: var(--red-dark); color: #fff; text-decoration: none; border-radius: 8px 0 0 8px; white-space: nowrap; transition: width 0.3s ease, background 0.2s ease, padding 0.3s ease; }
-    .sticky-tab:hover { width: 160px; background: var(--red); padding-right: 14px; }
-    .sticky-tab svg { width: 20px; height: 20px; flex-shrink: 0; stroke: #fff; fill: none; stroke-width: 2; }
-    .sticky-label { font-size: 13px; font-weight: 600; opacity: 0; max-width: 0; overflow: hidden; transition: opacity 0.2s ease, max-width 0.3s ease; margin-left: 8px; }
-    .sticky-tab:hover .sticky-label { opacity: 1; max-width: 110px; }
 
     /* ── PAGE HERO ── */
-    .page-hero { position: relative; height: 300px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .page-hero-bg { position: absolute; inset: -60px 0; background: url('../assets/images/hero-bg.png') center/cover no-repeat; will-change: transform; }
+    .page-hero { position: relative; height: 400px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .page-hero-bg { position: absolute; inset: -60px 0; background: url('../assets/images/insurance-bg-img.png') center/cover no-repeat; will-change: transform; }
     .page-hero-overlay { position: absolute; inset: 0; background: rgba(10,25,50,0.58); }
-    .page-hero-content { position: relative; z-index: 2; text-align: center; }
-    .page-hero-content h1 { font-family: 'Manrope', sans-serif; font-size: 52px; font-weight: 800; color: #fff; letter-spacing: -1px; }
+    .page-hero-content { position: relative; z-index: 2; top: 100px; }
+    .page-hero-content h1 { font-family: 'Manrope', sans-serif; font-size: 36px; font-weight: 700; color: #fff; letter-spacing: -1px; }
 
     /* ── INTRO SECTION ── */
-    .ins-intro { padding: 64px 32px 40px; text-align: center; border-bottom: 1px solid var(--border); }
+    .ins-intro { padding: 64px 32px 40px; text-align: center; }
     .ins-intro-inner { max-width: 860px; margin: 0 auto; }
     .ins-intro h2 { font-family: 'Manrope', sans-serif; font-size: 34px; font-weight: 700; color: var(--navy); margin-bottom: 18px; }
     .ins-intro p { font-size: 16px; line-height: 1.8; color: var(--body-text); }
 
     /* ── SEARCH + ALPHABET ── */
-    .ins-filter { padding: 36px 32px; background: #fff; border-bottom: 1px solid var(--border); }
+    .ins-filter { padding: 36px 32px; background: #fff; }
     .ins-filter-inner { max-width: var(--max); margin: 0 auto; display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap; }
 
     /* search */
@@ -104,7 +55,7 @@
     .ins-group-header h3 { font-family: 'Manrope', sans-serif; font-size: 22px; font-weight: 700; color: var(--navy); }
 
     .ins-group-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }
-    .ins-item { display: flex; align-items: center; gap: 10px; padding: 11px 12px; font-size: 14px; color: var(--navy); border-bottom: 1px solid var(--border); line-height: 1.45; transition: background 0.15s; }
+    .ins-item { display: flex; align-items: center; gap: 10px; padding: 11px 12px; font-size: 14px; color: var(--navy); line-height: 1.45; transition: background 0.15s; }
     .ins-item:hover { background: var(--light-bg); }
     .ins-item::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
 
@@ -116,25 +67,7 @@
     .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    /* ── FOOTER ── */
-    footer { background: var(--blue-dark); color: #fff; padding: 64px 0 0; }
-    .footer-inner { max-width: 1284px; margin: 0 auto; padding: 0 40px; }
-    .footer-top { display: flex; gap: 48px; margin-bottom: 64px; flex-wrap: wrap; }
-    .footer-brand { flex: 0 0 280px; }
-    .footer-brand img { height: 48px; width: auto; margin-bottom: 20px; }
-    .footer-brand p { font-size: 12px; color: rgba(255,255,255,0.75); line-height: 1.7; }
-    .footer-cols { flex: 1; display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 32px; }
-    .footer-col h4 { font-size: 17px; font-weight: 600; margin-bottom: 16px; }
-    .footer-col a { display: block; font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.85); text-decoration: none; padding: 8px 0; line-height: 1.5; }
-    .footer-col a:hover { color: #fff; }
-    .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.3); }
-    .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding: 24px 40px; flex-wrap: wrap; gap: 16px; }
-    .footer-copy { font-size: 15px; }
-    .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
-    .footer-links a { font-size: 15px; color: #fff; text-decoration: underline; }
-    .footer-socials { display: flex; gap: 12px; }
-    .footer-socials a { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; }
-    .footer-socials svg { width: 22px; height: 22px; fill: #fff; }
+
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
@@ -160,72 +93,8 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar-wrap">
-  <nav class="navbar">
-    <a href="index.html" class="navbar-logo">
-      <img src="../assets/images/logo.png" alt="Reddy Urgent Care" width="161" height="48" />
-    </a>
-    <div class="navbar-nav">
-      <a href="index.html" class="nav-link">Home</a>
-      <div class="nav-dropdown">
-        <a href="#" class="nav-link" id="servicesToggle">Services
-          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-        </a>
-      </div>
-      <a href="index.html#locations" class="nav-link">Locations</a>
-      <a href="insurance.html" class="nav-link" style="color:var(--blue);font-weight:600;">Insurance</a>
-      <a href="about.html" class="nav-link">About Us</a>
-    </div>
-    <div class="navbar-actions">
-      <a href="contact.html" class="btn btn-outline-red">
-        Contact Us
-        <svg viewBox="0 0 24 24" width="18" height="18"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-      <a href="index.html#locations" class="btn btn-red">Locations</a>
-    </div>
-  </nav>
-</div>
-
-<div class="mega-overlay" id="megaOverlay"></div>
-<div class="mega-menu" id="megaMenu">
-  <div class="mega-col">
-    <span class="mega-col-title">Services</span>
-    <ul><li><a href="#">Ultrasound</a></li><li><a href="#">X-Ray &amp; Imaging</a></li><li><a href="#">Blood Draw (on site)</a></li><li><a href="#">Point-of-Care (POC) Testing</a></li><li><a href="#">Injury Care &amp; Splinting</a></li><li><a href="#">IV Therapy</a></li></ul>
-  </div>
-  <div class="mega-col">
-    <span class="mega-col-title">Respiratory</span>
-    <ul><li><a href="#">Cold / Flu</a></li><li><a href="#">Cough</a></li><li><a href="#">Nasal Congestion</a></li><li><a href="#">Wheezing</a></li></ul>
-    <a href="#" class="view-all">View All</a>
-    <span class="mega-col-title" style="margin-top:20px;">Urinary &amp; Abdominal</span>
-    <ul><li><a href="#">UTI</a></li><li><a href="#">Nausea &amp; Vomiting</a></li><li><a href="#">Stomach Pain</a></li></ul>
-    <a href="#" class="view-all">View All</a>
-  </div>
-  <div class="mega-col">
-    <span class="mega-col-title">Ear, Nose &amp; Throat</span>
-    <ul><li><a href="#">Ear Infections</a></li><li><a href="#">Sore Throat</a></li><li><a href="#">Strep Throat</a></li></ul>
-    <a href="#" class="view-all">View All</a>
-    <span class="mega-col-title" style="margin-top:20px;">General &amp; Systemic</span>
-    <ul><li><a href="#">Fever</a></li><li><a href="#">Fatigue &amp; Weakness</a></li><li><a href="#">Headaches</a></li></ul>
-    <a href="#" class="view-all">View All</a>
-  </div>
-  <div class="mega-col">
-    <span class="mega-col-title">Injuries &amp; Trauma</span>
-    <ul><li><a href="#">Sprains &amp; Strains</a></li><li><a href="#">Fractures</a></li><li><a href="#">Cuts &amp; Lacerations</a></li></ul>
-    <a href="#" class="view-all">View All</a>
-    <span class="mega-col-title" style="margin-top:20px;">Women's Health</span>
-    <ul><li><a href="#">UTI</a></li><li><a href="#">Pregnancy Tests</a></li><li><a href="#">Vaginal Infections</a></li></ul>
-    <a href="#" class="view-all">View All</a>
-  </div>
-  <div class="mega-col">
-    <span class="mega-col-title">Skin &amp; Infections</span>
-    <ul><li><a href="#">Rashes</a></li><li><a href="#">Hives</a></li><li><a href="#">Insect Bites</a></li></ul>
-    <a href="#" class="view-all">View All</a>
-    <span class="mega-col-title" style="margin-top:20px;">Vaccinations</span>
-    <ul><li><a href="#">Tetanus Vaccination</a></li></ul>
-    <a href="#" class="view-all">View All</a>
-  </div>
-</div>
+<div id="navbar-container"></div>
+<div id="mega-menu-container"></div>
 
 <!-- STICKY RAIL -->
 <aside class="sticky-rail">
@@ -409,60 +278,8 @@
   </div><!-- ins-list-inner -->
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <img src="../assets/images/footer-logo.png" alt="Reddy Urgent Care" />
-        <p>Your trusted walk-in urgent care in Long Beach, Paramount, and the Greater South Bay area. No appointment needed; real providers, real care, every day. Same-day care for injuries, illnesses, &amp; more for patients of all ages.</p>
-      </div>
-      <div class="footer-cols">
-        <div class="footer-col">
-          <h4>Locations</h4>
-          <a href="#">Downtown, Long Beach</a><a href="#">Bixby Knolls, Long Beach</a><a href="#">Paramount</a>
-        </div>
-        <div class="footer-col">
-          <h4>Treatments</h4>
-          <a href="#">Respiratory</a><a href="#">ENT</a><a href="#">Injuries &amp; Trauma</a>
-          <a href="#">Urinary &amp; Abdominal</a><a href="#">Skin &amp; Infections</a>
-          <a href="#">General Symptoms</a><a href="#">Women's Health (Urgent)</a>
-          <a href="#">Vaccinations (Injury-Related)</a>
-        </div>
-        <div class="footer-col">
-          <h4>Services</h4>
-          <a href="#">Ultrasound</a><a href="#">X-Ray &amp; Imaging</a>
-          <a href="#">Blood Draws (On-Site)</a><a href="#">Point-of-Care (POC) Testing</a>
-          <a href="#">Injury Care &amp; Splinting</a><a href="#">IV Therapy (Hydration &amp; Antibiotics)</a>
-        </div>
-        <div class="footer-col">
-          <h4>About Us</h4>
-          <a href="about.html">About Us</a><a href="about.html#team">Team</a>
-          <a href="index.html#locations">Locations</a><a href="insurance.html">Insurances</a>
-        </div>
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <a href="tel:5623361656">Phone No: 562-336-1656</a>
-          <a href="#">Fax No: 562-336-1659</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <hr class="footer-divider" />
-  <div class="footer-bottom">
-    <span class="footer-copy">© 2026 Reddyuc. All rights reserved.</span>
-    <div class="footer-links">
-      <a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookies Settings</a>
-    </div>
-    <div class="footer-socials">
-      <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
-      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="#fff" stroke-width="2"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" fill="none" stroke="#fff" stroke-width="2"/></svg></a>
-      <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20" stroke="#fff" stroke-width="2.5" fill="none"/></svg></a>
-      <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
-      <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.95C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
-    </div>
-  </div>
-</footer>
+<script src="../JS/include.js"></script>
+<script src="../JS/main.js"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
